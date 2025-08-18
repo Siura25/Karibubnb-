@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Booking - KaribuBnB</title>
+  <style>
+    body { margin:0; font-family:Arial,sans-serif; background:#eef7ff; }
+    header { background:#2196F3; color:white; text-align:center; padding:20px; }
+    nav { background:linear-gradient(90deg,#673AB7,#2196F3); padding:15px; text-align:center; }
+    nav a { color:white; margin:0 15px; text-decoration:none; font-size:18px; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+    .form-container { max-width:600px; margin:30px auto; background:white; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+    form input, form select, form textarea { width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px; }
+    form button { background:#2196F3; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; }
+    form button:hover { background:#0b79d0; }
+    footer { background:#333; color:white; text-align:center; padding:15px; margin-top:40px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Book Your Stay</h1>
+    <p>Reserve a room at KaribuBnB</p>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="services.html">Services</a>
+    <a href="booking.html">Booking</a>
+    <a href="app.html">App</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <section class="form-container">
+    <form>
+      <label>Name:</label>
+      <input type="text" required>
+      <label>Email:</label>
+      <input type="email" required>
+      <label>Check-in Date:</label>
+      <input type="date" required>
+      <label>Check-out Date:</label>
+      <input type="date" required>
+      <label>Guests:</label>
+      <select>
+        <option>1</option><option>2</option><option>3</option><option>4+</option>
+      </select>
+      <label>Special Requests:</label>
+      <textarea rows="3"></textarea>
+      <button type="submit">Book Now</button>
+    </form>
+  </section>
+  <footer>&copy; 2025 KaribuBnB | All Rights Reserved</footer>
+</body>
+</html>
