@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Gallery - KaribuBnB</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #ff6f61;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    nav {
+      background: linear-gradient(90deg, #4CAF50, #2196F3);
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Our Gallery</h1>
+    <p>Discover the beauty of KaribuBnB stays</p>
+  </header>
+  
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="gallery">
+    <img src="https://source.unsplash.com/400x300/?house,kenya" alt="House">
+    <img src="https://source.unsplash.com/400x300/?room,hotel" alt="Room">
+    <img src="https://source.unsplash.com/400x300/?beach,kenya" alt="Beach">
+    <img src="https://source.unsplash.com/400x300/?nature,africa" alt="Nature">
+    <img src="https://source.unsplash.com/400x300/?city,kenya" alt="City">
+    <img src="https://source.unsplash.com/400x300/?travel,africa" alt="Travel">
+  </section>
+
+  <footer>
+    &copy; 2025 KaribuBnB | All Rights Reserved
+  </footer>
+</body>
+</html>
