@@ -3,40 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KaribuBnB</title>
-  <link rel="stylesheet" href="style.css">
+  <title>KaribuBnB - Experience Kenya</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #ffecd2, #fcb69f);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #ff6f61;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #ff6f61;
+      margin-bottom: 0.8rem;
+    }
+
+    a {
+      color: #ff6f61;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      background: #333;
+      color: white;
+      padding: 1.5rem 1rem;
+      margin-top: 2rem;
+    }
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .contact p {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 10px 20px;
+      background: #ff6f61;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #e85b50;
+    }
+  </style>
 </head>
 <body>
-  <!-- Splash / Header -->
   <header>
     <h1>KaribuBnB</h1>
-    <p class="tagline">Stay Connected, Experience Kenya</p>
+    <p>Stay Connected, Experience Kenya</p>
   </header>
 
-  <!-- About -->
-  <section class="about">
+  <section>
     <h2>Welcome</h2>
-    <p>
-      KaribuBnB is your homestay experience in Kenya.  
-      Simple, local, and affordable — discover comfort and culture all in one place.
-    </p>
+    <p>KaribuBnB is your homestay experience in Kenya. Simple, local, and affordable — discover comfort and culture all in one place.</p>
   </section>
 
-  <!-- Coming Soon -->
-  <section class="coming-soon">
+  <section>
     <h2>Coming Soon</h2>
     <p>We’re preparing something special. Stay tuned!</p>
     <a href="#" class="btn">Get the App</a>
   </section>
 
-  <!-- Contact -->
-  <section class="contact">
+  <section>
     <h2>Contact Us</h2>
-    <p>📞 WhatsApp: <a href="https://wa.me/254112226127">+254 112 226127</a></p>
-    <p>📧 Email: <a href="mailto:briansiura@gmail.com">briansiura@gmail.com</a>
+    <div class="contact">
+      <p>📱 WhatsApp: <a href="https://wa.me/254112226127">+254 112 226127</a></p>
+      <p>📧 Email: <a href="mailto:briansiura@gmail.com">briansiura@gmail.com</a></p>
+    </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 KaribuBnB. All Rights Reserved.</p>
   </footer>
