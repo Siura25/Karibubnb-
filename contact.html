@@ -35,8 +35,76 @@
       font-weight: bold;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KaribuBnB - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fdfdfd;
+    }
+    /* Navbar Styling */
+    nav {
+      background: linear-gradient(90deg, #ff6f61, #ffcc70);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+    nav .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav ul li a:hover {
+      color: #222;
+    }
+    /* Page Content */
+    .content {
+      padding: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">KaribuBnB</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="content">
+    <h1>Welcome to KaribuBnB</h1>
+    <p>Stay connected, experience Kenya.</p>
+  </div>
+
+</body>
+</html>
     }
 
     .container {
