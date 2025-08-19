@@ -1,67 +1,72 @@
-    }
-    .content p {
-      max-width: 700px;
-      margin: auto;
-    }
-
-    /* Footer */
-    footer {
-      background: #2c3e50;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-    }
-    footer a {
-      color: #f39c12;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KaribuBnB - Find Your Perfect Stay</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="bnb-listings.html">BnB Listings</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">KaribuBnB</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <!-- Hero Section -->
-  <div class="hero">
-    <div>
-      <h1>Welcome to KaribuBnB</h1>
-      <p>Discover unique stays, connect directly with hosts, and book your perfect getaway.</p>
-    </div>
-  </div>
+  <section class="hero">
+    <h1>Welcome to KaribuBnB</h1>
+    <p>Find the best BnBs across Kenya. Easy booking, secure payment, and direct contact with hosts.</p>
+  </section>
 
-  <!-- Main Content -->
-  <div class="content">
+  <!-- Why Choose Us -->
+  <section class="content">
     <h2>Why Choose KaribuBnB?</h2>
-    <p>
-      KaribuBnB is your go-to platform for finding beautiful, affordable, and unique BnB stays. 
-      Whether you are a host wanting to showcase your property or a guest looking for the perfect 
-      getaway, we make it easy to connect directly via WhatsApp or phone call.
-    </p>
-  </div>
+    <p>We connect travelers with affordable and comfortable BnBs while giving hosts the freedom to showcase their properties.</p>
+  </section>
+
+  <!-- For Hosts -->
+  <section id="hosts" class="content">
+    <h2>For Hosts</h2>
+    <p>KaribuBnB gives hosts their own accounts where they can post and manage property listings. 
+       Hosts can upload photos, update details, and connect directly with clients.</p>
+  </section>
+
+  <!-- For Clients -->
+  <section id="clients" class="content">
+    <h2>For Clients</h2>
+    <p>Browse unique BnB listings and contact hosts directly. 
+       You can <strong>WhatsApp or call</strong> the host instantly for fast bookings.</p>
+  </section>
+
+  <!-- Payment Section -->
+  <section id="payment" class="content">
+    <h2>Pay with M-Pesa</h2>
+    <p>You can easily pay for your booking using M-Pesa:</p>
+    <ul>
+      <li><strong>M-Pesa Number:</strong> 0112226127</li>
+      <li><strong>Email for Payment Confirmation:</strong> 
+        <a href="mailto:karibubnb@gmail.com">karibubnb@gmail.com</a>
+      </li>
+    </ul>
+    <p>After making payment, kindly send a confirmation via WhatsApp or email.</p>
+  </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 KaribuBnB | All Rights Reserved</p>
-    <p>
-      <a href="https://wa.me/254112226127" target="_blank">WhatsApp Us</a> | 
-      <a href="tel:+254112226127">Call Us</a> | 
-      <a href="mailto:briansiura@gmail.com">Email Us</a>
-    </p>
+    <p>&copy; 2025 KaribuBnB. All rights reserved.</p>
+    <div class="quick-contact">
+      <a href="tel:+254112226127" class="btn">Call Us</a>
+      <a href="https://wa.me/254112226127" class="btn">WhatsApp Us</a>
+      <a href="mailto:karibubnb@gmail.com" class="btn">Email Us</a>
+    </div>
   </footer>
-
 </body>
 </html>
