@@ -4,58 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BnB Listings - KaribuBnB</title>
-  <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f4f4f9; }
-    .navbar { background: #2c3e50; padding: 15px; text-align: center; }
-    .navbar ul { list-style: none; margin: 0; padding: 0; }
-    .navbar ul li { display: inline-block; margin: 0 15px; }
-    .navbar ul li a { color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s; }
-    .navbar ul li a:hover { color: #f39c12; }
-    .content { padding: 40px; text-align: center; }
-    .content h2 { color: #2c3e50; }
-    .listing { background: #fff; padding: 20px; margin: 20px auto; max-width: 600px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .listing img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; }
-    .listing h3 { margin: 10px 0; color: #2c3e50; }
-    .listing p { margin: 5px 0; }
-    .listing a { display: inline-block; margin-top: 10px; padding: 10px 15px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 5px; transition: 0.3s; }
-    .listing a:hover { background: #f39c12; }
-    footer { background: #2c3e50; color: #fff; text-align: center; padding: 20px; margin-top: 30px; }
-    footer a { color: #f39c12; text-decoration: none; margin: 0 10px; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="navbar">
+  <!-- ===== Navbar ===== -->
+  <nav>
+    <div class="logo">KaribuBnB</div>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="bnb-listings.html">BnB Listings</a></li>
       <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="bnb-listings.html" class="active">BnB Listings</a></li>
+      <li><a href="hosts.html">For Hosts</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <div class="content">
-    <h2>BnB Listings</h2>
-    <p>Here are some available BnBs. Contact hosts directly via WhatsApp or call.</p>
+  <!-- ===== Page Title ===== -->
+  <section class="hero small-hero">
+    <h1>Available BnBs</h1>
+    <p>Find the best stays and connect with hosts directly</p>
+  </section>
 
-    <div class="listing">
-      <img src="https://source.unsplash.com/600x400/?bnb,room" alt="BnB Listing 1">
-      <h3>Cozy Apartment in Nairobi</h3>
-      <p>Price: $35/night</p>
-      <a href="https://wa.me/254112226127" target="_blank">Contact Host</a>
+  <!-- ===== Listings ===== -->
+  <section>
+    <h2>Featured Listings</h2>
+    <div class="listings">
+      <!-- Listing 1 -->
+      <div class="card">
+        <img src="images/bnb1.jpg" alt="BnB 1">
+        <h3>Cozy Apartment</h3>
+        <p><strong>Location:</strong> Nairobi CBD</p>
+        <p><strong>Price:</strong> KSh 3,500 / night</p>
+        <div class="card-actions">
+          <a href="tel:+254112226127" class="btn">Call Host</a>
+          <a href="https://wa.me/254112226127" class="btn">WhatsApp Host</a>
+        </div>
+      </div>
+
+      <!-- Listing 2 -->
+      <div class="card">
+        <img src="images/bnb2.jpg" alt="BnB 2">
+        <h3>Luxury Villa</h3>
+        <p><strong>Location:</strong> Mombasa Beach</p>
+        <p><strong>Price:</strong> KSh 12,000 / night</p>
+        <div class="card-actions">
+          <a href="tel:+254112226127" class="btn">Call Host</a>
+          <a href="https://wa.me/254112226127" class="btn">WhatsApp Host</a>
+        </div>
+      </div>
+
+      <!-- Listing 3 -->
+      <div class="card">
+        <img src="images/bnb3.jpg" alt="BnB 3">
+        <h3>Modern Studio</h3>
+        <p><strong>Location:</strong> Kisumu City</p>
+        <p><strong>Price:</strong> KSh 2,000 / night</p>
+        <div class="card-actions">
+          <a href="tel:+254112226127" class="btn">Call Host</a>
+          <a href="https://wa.me/254112226127" class="btn">WhatsApp Host</a>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="listing">
-      <img src="https://source.unsplash.com/600x400/?bnb,villa" alt="BnB Listing 2">
-      <h3>Luxury Villa in Mombasa</h3>
-      <p>Price: $120/night</p>
-      <a href="https://wa.me/254112226127" target="_blank">Contact Host</a>
-    </div>
-
-  </div>
-
+  <!-- ===== Footer ===== -->
   <footer>
-    <p>&copy; 2025 KaribuBnB</p>
+    <p>&copy; 2025 KaribuBnB | All Rights Reserved</p>
+    <div class="quick-contact">
+      <a href="tel:+254112226127" class="btn">Call Us</a>
+      <a href="https://wa.me/254112226127" class="btn">WhatsApp</a>
+      <a href="mailto:karibubnb@gmail.com" class="btn">Email</a>
+    </div>
   </footer>
 </body>
 </html>
