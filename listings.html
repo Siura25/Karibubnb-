@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Listings - KaribuBnB</title>
+  <style>
+    body{margin:0;font-family:Arial,sans-serif;background:#f8f9fa;color:#333}
+    header{background:#0077b6;color:#fff;text-align:center;padding:15px 20px}
+    nav{background:#023e8a;text-align:center;padding:10px}
+    nav a{color:#fff;text-decoration:none;margin:0 12px;font-weight:bold}
+    nav a:hover{color:#ffb703}
+    .wrap{max-width:1100px;margin:20px auto;padding:0 16px}
+    .filters{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+    .filters input,.filters select{padding:10px;border:1px solid #ccc;border-radius:6px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card{background:#fff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.08);overflow:hidden}
+    .card img{width:100%;height:170px;object-fit:cover}
+    .card-body{padding:14px}
+    .title{font-size:1.1rem;font-weight:bold;margin:6px 0}
+    .meta{font-size:.95rem;color:#555;margin:2px 0}
+    .amen{font-size:.9rem;color:#555;margin-top:6px}
+    .amen span{background:#eef6ff;border-radius:14px;padding:4px 8px;margin:2px;display:inline-block}
+    .btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+    .btn{flex:1;text-align:center;text-decoration:none;padding:10px;border-radius:8px;font-weight:bold;color:#fff}
+    .btn-wa{background:#25d366}
+    .btn-call{background:#28a745}
+    .btn-map{background:#495057}
+    .note{margin-top:20px;color:#666}
+    footer{background:#023e8a;color:#fff;text-align:center;padding:14px;margin-top:30px}
+    @media(max-width:680px){.filters{grid-template-columns:1fr}}
+    details summary{cursor:pointer;margin-top:8px;color:#0077b6;font-weight:bold}
+    video{width:100%;border-radius:8px;margin-top:8px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>KaribuBnB Listings</h1>
+    <p>Find a stay and contact the host directly</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="listings.html">Listings</a>
+    <a href="add-bnb.html">Add Your BnB</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="wrap">
+    <!-- Filters -->
+    <div class="filters">
+      <input id="q" type="text" placeholder="Search by title or amenities (e.g. WiFi, pool)"/>
+      <select id="loc">
+        <option value="">All locations</option>
+      </select>
+      <select id="sort">
+        <option value="">Sort by</option>
+        <option value="price-asc">Price: low → high</option>
+        <option value="price-desc">Price: high → low</option>
+      </select>
+    </div>
+
+    <!-- Cards -->
+    <div id="grid" class="grid"></div>
+    <p id="empty" class="note" style="display:none;">No listings match your filters.</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 KaribuBnB | Direct host contact via WhatsApp or Call</p>
+  </footer>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+    const q = document.getElementById('q');
+    const loc = document.getElementById('loc');
+    const sortSel = document.getElementById('sort');
+
+    let ALL = [];
+
+    function phoneDigits(p){ return (p||'').replace(/\D/g,''); }
+
+    function makeCard(it){
+      const waDigits = phoneDigits(it.whatsapp || it.phone);
+      const callHref = 'tel:' + (it.phone || '');
+      const waText = encodeURIComponent(`Hello ${it.host_name||'Host'}, I'm interested in "${it.title}" on KaribuBnB. Is it available?`);
+      const waHref = `https://wa.me/${waDigits}?text=${waText}`;
+      const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(it.maps_query || it.location || '')}`;
+
+      const amen = (it.amenities||[]).map(a=>`<span>${a}</span>`).join(' ');
+      const imgs = (it.images||[]);
+      const img0 = imgs[0] || 'https://via.placeholder.com/800x500?text=KaribuBnB';
+
+      const moreImgs = imgs.slice(1).map(u=>`<img src="${u}" alt="More photo" loading="lazy" />`).join('');
+      const video = it.video ? `<video controls src="${it.video}" preload="metadata"></video>` : '';
+
+      return `
+      <div class="card">
+        <img src="${img0}" alt="${it.title}" loading="lazy" />
+        <div class="card-body">
+          <div class="title">${it.title}</div>
+          <div class="meta">📍 ${it.location || ''}</div>
+          <div class="meta">💰 KES ${Number(it.price_per_night||0).toLocaleString()}/night</div>
+          <div class="amen">${amen}</div>
+
+          ${ (imgs.length>1 || it.video) ? `
+            <details>
+              <summary>View more media</summary>
+              ${moreImgs}
+              ${video}
+            </details>` : '' }
+
+          <div class="btns">
+            <a class="btn btn-wa" href="${waHref}" target="_blank" rel="noopener">💬 WhatsApp Host</a>
+            <a class="btn btn-call" href="${callHref}">📞 Call Host</a>
+            <a class="btn btn-map" href="${mapHref}" target="_blank" rel="noopener">🗺️ View on Map</a>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function render(){
+      const query = (q.value||'').trim().toLowerCase();
+      const locVal = (loc.value||'').toLowerCase();
+      let rows = ALL.filter(it=>{
+        const hay = [
+          it.title, it.location,
+          ...(it.amenities||[])
+        ].join(' ').toLowerCase();
+        const okQ = !query || hay.includes(query);
+        const okL = !locVal || (it.location||'').toLowerCase().includes(locVal);
+        return okQ && okL;
+      });
+
+      if (sortSel.value==='price-asc') rows.sort((a,b)=>(a.price_per_night||0)-(b.price_per_night||0));
+      if (sortSel.value==='price-desc') rows.sort((a,b)=>(b.price_per_night||0)-(a.price_per_night||0));
+
+      grid.innerHTML = rows.map(makeCard).join('');
+      empty.style.display = rows.length ? 'none' : 'block';
+    }
+
+    function buildLocationFilter(){
+      const set = new Set();
+      ALL.forEach(it=>{ if(it.location) set.add(it.location.split(',')[0].trim()); });
+      const opts = ['<option value="">All locations</option>', ...Array.from(set).sort().map(v=>`<option value="${v}">${v}</option>`)];
+      loc.innerHTML = opts.join('');
+    }
+
+    fetch('data/listings.json')
+      .then(r=>r.json())
+      .then(data=>{
+        ALL = data;
+        buildLocationFilter();
+        render();
+      })
+      .catch(()=>{
+        grid.innerHTML = '<p class="note">Could not load listings.json. Make sure the file exists at <code>data/listings.json</code>.</p>';
+      });
+
+    q.addEventListener('input', render);
+    loc.addEventListener('change', render);
+    sortSel.addEventListener('change', render);
+  </script>
+</body>
+                                      </html>
