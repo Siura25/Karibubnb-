@@ -3,58 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KaribuBnB - Home</title>
+  <title>KaribuBnB</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav>
-    <h1>KaribuBnB</h1>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="bnb-listings.html">Listings</a></li>
-      <li><a href="hosts.html">Hosts</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>KaribuBnB</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="bnb-listings.html">Listings</a></li>
+          <li><a href="hosts.html">Hosts</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <h2>Welcome to KaribuBnB</h2>
+    <div class="container">
+      <h2>Welcome to KaribuBnB</h2>
+      <p>Find your perfect getaway or host your property with ease.</p>
+      <a href="bnb-listings.html" class="btn">Explore Listings</a>
+    </div>
   </section>
 
-  <!-- About -->
-  <section>
-    <h2>About Us</h2>
-    <p>KaribuBnB connects guests with amazing hosts across Kenya. Whether you’re looking for a cozy getaway or a luxury stay, we have you covered.</p>
+  <!-- About Section -->
+  <section class="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        KaribuBnB connects guests with amazing hosts across Kenya. 
+        Whether you’re looking for a cozy getaway or a luxury stay, we have you covered.
+      </p>
+    </div>
   </section>
 
-  <!-- Mpesa Payment Section -->
-  <section class="mpesa">
-    <h3>Pay with M-Pesa</h3>
-    <p>To confirm your booking or host payment, kindly pay via M-Pesa:</p>
-    <p><strong>Paybill: 0112226127</strong></p>
-    <p><strong>Email: karibubnb@gmail.com</strong></p>
+  <!-- Payment Section -->
+  <section class="payment">
+    <div class="container">
+      <h2>Pay with M-Pesa</h2>
+      <p>To confirm your booking or host payment, kindly pay via M-Pesa:</p>
+      <p><strong>Paybill:</strong> 0112226127</p>
+      <p><strong>Email:</strong> karibuBnB@gmail.com</p>
+    </div>
   </section>
 
-  <!-- Contact -->
-  <section class="contact-info">
-    <h2>Quick Contact</h2>
-    <p>Email: <a href="mailto:karibubnb@gmail.com">karibubnb@gmail.com</a></p>
-    <p>Phone/WhatsApp: <a href="tel:+254112226127">+254 112 226 127</a></p>
-  </section>
-
-  <!-- Footer -->
+  <!-- Quick Contact Section -->
   <footer>
-    <p>&copy; 2025 KaribuBnB. All rights reserved.</p>
-    <div class="quick-contact">
-      <a href="https://wa.me/254112226127" class="whatsapp">WhatsApp</a>
-      <a href="tel:+254112226127" class="call">Call</a>
+    <div class="container">
+      <h2>Quick Contact</h2>
+      <p>Email: <a href="mailto:karibubnb@gmail.com">karibubnb@gmail.com</a></p>
+      <p>Phone/WhatsApp: <a href="https://wa.me/254112226127" target="_blank">+254 112 226 127</a></p>
+      <a href="https://wa.me/254112226127" class="btn">WhatsApp Call</a>
+      <p class="copyright">© 2025 KaribuBnB. All rights reserved.</p>
     </div>
   </footer>
-
 </body>
 </html>
