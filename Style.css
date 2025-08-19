@@ -1,72 +1,100 @@
-/* ===== Global Reset ===== */
+/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  background: #f9f9f9;
-  color: #333;
   line-height: 1.6;
+  color: #333;
+  background: #f9f9f9;
 }
 
-/* ===== Navbar ===== */
-nav {
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+/* Header */
+header {
   background: #2c3e50;
   color: #fff;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 20px 0;
 }
 
-nav h1 {
-  font-size: 22px;
+header h1 {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-nav ul {
+header nav ul {
   list-style: none;
-  display: flex;
-  gap: 15px;
+  text-align: center;
 }
 
-nav ul li a {
+header nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+header nav ul li a {
   color: #fff;
   text-decoration: none;
-  padding: 6px 12px;
-  transition: 0.3s;
+  font-weight: bold;
 }
 
-nav ul li a:hover {
-  background: #16a085;
-  border-radius: 5px;
+header nav ul li a:hover {
+  text-decoration: underline;
 }
 
-/* ===== Hero Section ===== */
+/* Hero */
 .hero {
-  background: url('hero.jpg') no-repeat center center/cover;
-  height: 350px;
+  background: url('https://source.unsplash.com/1600x600/?hotel,resort') no-repeat center center/cover;
+  color: #fff;
+  height: 400px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  color: white;
 }
 
 .hero h2 {
-  font-size: 40px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 15px;
-  border-radius: 10px;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
-/* ===== Sections ===== */
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #27ae60;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #219150;
+}
+
+/* Sections */
 section {
-  padding: 40px 20px;
-  max-width: 1100px;
-  margin: auto;
+  padding: 40px 0;
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 section h2 {
@@ -75,168 +103,25 @@ section h2 {
   color: #2c3e50;
 }
 
-/* ===== Buttons ===== */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #16a085;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #1abc9c;
-}
-
-/* ===== Gallery Grid ===== */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-}
-
-.gallery-grid img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.gallery-grid img:hover {
-  transform: scale(1.05);
-}
-
-/* ===== Hosts Page ===== */
-.host-info {
-  background: #ecf0f1;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-/* ===== Listings Page ===== */
-.listings {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.listing-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-}
-
-.listing-card:hover {
-  transform: translateY(-5px);
-}
-
-.listing-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 12px;
-}
-
-.listing-card h3 {
-  margin-bottom: 8px;
-  color: #2c3e50;
-}
-
-.listing-card p {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.listing-card .actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.whatsapp-btn {
-  background: #25d366;
-  padding: 8px 12px;
-  border-radius: 5px;
-  color: white;
-  text-decoration: none;
-}
-
-.call-btn {
-  background: #007bff;
-  padding: 8px 12px;
-  border-radius: 5px;
-  color: white;
-  text-decoration: none;
-}
-
-/* ===== Mpesa Section ===== */
-.mpesa {
-  background: #eafaf1;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.mpesa h3 {
-  color: #2c3e50;
-  margin-bottom: 10px;
-}
-
-.mpesa p {
-  margin-bottom: 12px;
-  font-size: 15px;
-}
-
-.mpesa strong {
-  color: #16a085;
-}
-
-/* ===== Contact Section ===== */
-.contact-info {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.contact-info a {
-  color: #16a085;
-  text-decoration: none;
-}
-
-/* ===== Footer ===== */
+/* Footer */
 footer {
   background: #2c3e50;
-  color: white;
+  color: #fff;
   text-align: center;
-  padding: 15px;
-  margin-top: 20px;
+  padding: 30px 0;
 }
 
-footer .quick-contact {
-  margin-top: 10px;
-}
-
-footer .quick-contact a {
-  margin: 0 8px;
-  padding: 8px 14px;
-  border-radius: 5px;
+footer a {
+  color: #27ae60;
   text-decoration: none;
-  color: white;
 }
 
-footer .quick-contact .whatsapp {
-  background: #25d366;
+footer a:hover {
+  text-decoration: underline;
 }
 
-footer .quick-contact .call {
-  background: #007bff;
+footer .copyright {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #ccc;
 }
