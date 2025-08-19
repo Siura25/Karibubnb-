@@ -6,47 +6,50 @@
   <title>Gallery - KaribuBnB</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
       color: #333;
     }
     header {
-      background: #ff6600;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
       padding: 15px;
       text-align: center;
+      color: white;
     }
     nav {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      background: #444;
     }
     nav a {
-      text-decoration: none;
       color: white;
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: background 0.3s;
+      text-decoration: none;
+      padding: 14px 20px;
+      display: block;
     }
     nav a:hover {
-      background: #ff9966;
+      background: #6a11cb;
     }
-    h1 {
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #6a11cb;
       text-align: center;
-      margin-top: 20px;
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 15px;
-      padding: 20px;
+      margin-top: 20px;
     }
     .gallery img {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       transition: transform 0.3s;
     }
     .gallery img:hover {
@@ -54,32 +57,36 @@
     }
     footer {
       text-align: center;
-      padding: 15px;
-      background: #333;
+      padding: 10px;
+      background: #444;
       color: white;
-      margin-top: 30px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="gallery.html">Gallery</a>
-    </nav>
+    <h1>Our Gallery</h1>
   </header>
 
-  <h1>Our Gallery</h1>
-  <div class="gallery">
-    <img src="https://via.placeholder.com/400x250.png?text=Room+1" alt="Room 1">
-    <img src="https://via.placeholder.com/400x250.png?text=Room+2" alt="Room 2">
-    <img src="https://via.placeholder.com/400x250.png?text=Lounge" alt="Lounge">
-    <img src="https://via.placeholder.com/400x250.png?text=Garden" alt="Garden">
-    <img src="https://via.placeholder.com/400x250.png?text=Pool" alt="Pool">
-    <img src="https://via.placeholder.com/400x250.png?text=Balcony" alt="Balcony">
-  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+
+  <main>
+    <h2>Explore KaribuBnB</h2>
+    <div class="gallery">
+      <img src="https://picsum.photos/400/300?random=1" alt="Room 1">
+      <img src="https://picsum.photos/400/300?random=2" alt="Room 2">
+      <img src="https://picsum.photos/400/300?random=3" alt="Dining Area">
+      <img src="https://picsum.photos/400/300?random=4" alt="Lounge">
+      <img src="https://picsum.photos/400/300?random=5" alt="Garden">
+      <img src="https://picsum.photos/400/300?random=6" alt="Balcony View">
+    </div>
+  </main>
 
   <footer>
     <p>&copy; 2025 KaribuBnB | All Rights Reserved</p>
