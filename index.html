@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KaribuBnB</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KaribuBnB — Home</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
-  <header>
+  <header class="site-header">
     <div class="container">
-      <h1>KaribuBnB</h1>
+      <h1 class="logo">KaribuBnB</h1>
       <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
+        <ul class="nav">
+          <li><a class="active" href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="bnb-listings.html">Listings</a></li>
@@ -24,45 +23,48 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <div class="container">
-      <h2>Welcome to KaribuBnB</h2>
-      <p>Find your perfect getaway or host your property with ease.</p>
-      <a href="bnb-listings.html" class="btn">Explore Listings</a>
+    <div class="container hero-inner">
+      <h2>Stay. Connect. Experience Kenya.</h2>
+      <p>Find unique stays hosted by locals. Hosts get clients directly via WhatsApp or Call.</p>
+      <div class="hero-actions">
+        <a class="btn" href="bnb-listings.html">Explore Listings</a>
+        <a class="btn outline" href="hosts.html">Become a Host</a>
+      </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about">
+  <section class="section">
     <div class="container">
-      <h2>About Us</h2>
-      <p>
-        KaribuBnB connects guests with amazing hosts across Kenya. 
-        Whether you’re looking for a cozy getaway or a luxury stay, we have you covered.
-      </p>
+      <h3>Pay with M-Pesa or Bank</h3>
+      <p>To activate your host account, make a payment and you’ll be able to post immediately.</p>
+      <div class="paybox">
+        <div>
+          <h4>M-Pesa</h4>
+          <p><strong>Paybill/Till (Number):</strong> 0112226127</p>
+          <p><strong>Confirm via Email:</strong> <a href="mailto:karibubnb@gmail.com">karibubnb@gmail.com</a></p>
+        </div>
+        <div>
+          <h4>Bank (Optional)</h4>
+          <p><strong>Bank:</strong> Stanbic</p>
+          <p><strong>Account Name:</strong> Paul Brian Okoth Siura</p>
+          <p><strong>Account No.:</strong> 0100006846558</p>
+        </div>
+      </div>
+      <p class="muted">After payment, click “I’ve Paid” in the Hosts page to unlock posting.</p>
     </div>
   </section>
 
-  <!-- Payment Section -->
-  <section class="payment">
+  <footer class="site-footer">
     <div class="container">
-      <h2>Pay with M-Pesa</h2>
-      <p>To confirm your booking or host payment, kindly pay via M-Pesa:</p>
-      <p><strong>Paybill:</strong> 0112226127</p>
-      <p><strong>Email:</strong> karibuBnB@gmail.com</p>
-    </div>
-  </section>
-
-  <!-- Quick Contact Section -->
-  <footer>
-    <div class="container">
-      <h2>Quick Contact</h2>
-      <p>Email: <a href="mailto:karibubnb@gmail.com">karibubnb@gmail.com</a></p>
-      <p>Phone/WhatsApp: <a href="https://wa.me/254112226127" target="_blank">+254 112 226 127</a></p>
-      <a href="https://wa.me/254112226127" class="btn">WhatsApp Call</a>
-      <p class="copyright">© 2025 KaribuBnB. All rights reserved.</p>
+      <div class="quick">
+        <a class="btn wa" href="https://wa.me/254112226127" target="_blank">WhatsApp</a>
+        <a class="btn call" href="tel:+254112226127">Call</a>
+      </div>
+      <p>© 2025 KaribuBnB</p>
     </div>
   </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
