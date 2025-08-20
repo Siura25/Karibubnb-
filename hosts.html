@@ -1,36 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hosts - KaribuBnB</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KaribuBnB - For Hosts</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
+<header>
+  <h1>KaribuBnB</h1>
   <nav>
-    <h1>KaribuBnB</h1>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
       <li><a href="bnb-listings.html">Listings</a></li>
-      <li><a href="hosts.html" class="active">Hosts</a></li>
+      <li><a class="active" href="hosts.html">For Hosts</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
+</header>
 
-  <section>
-    <h2>Become a Host</h2>
-    <div class="host-info">
-      <p>List your property on KaribuBnB and reach more clients directly via WhatsApp and Call.</p>
-      <p><strong>Note:</strong> Hosts are required to make their payments before posting their property.</p>
-    </div>
-  </section>
+<section>
+  <h2>Become a Host</h2>
+  <div class="payment-section">
+    <h3>Step 1 — Pay</h3>
+    <p><strong>M-PESA:</strong> 0112226127</p>
+    <p><strong>Email proof:</strong> <a href="mailto:karibubnb@gmail.com">karibubnb@gmail.com</a></p>
+    <p><strong>Bank (optional):</strong> Stanbic • Paul Brian Okoth Siura • 0100006846558</p>
+    <label class="mock-check"><input type="checkbox" id="mockPaid"/> I’ve paid (mock for now)</label>
+    <a href="payment-success.html" class="btn btn-success">I’ve Paid</a>
+    <p class="small-note"><em>Mock now — later we’ll auto-verify via M-PESA & Firebase.</em></p>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 KaribuBnB. All rights reserved.</p>
-  </footer>
+  <h3>Step 2 — Post Your BnB</h3>
+  <form id="hostPostForm" class="host-form">
+    <label>Host Name</label>
+    <input type="text" id="hostName" placeholder="Your name" required/>
 
+    <label>Host WhatsApp/Phone (country code e.g. 2547…)</label>
+    <input type="tel" id="hostPhone" placeholder="254112226127" required/>
+
+    <label>BnB Name</label>
+    <input type="text" id="bnbName" placeholder="e.g. Cozy Nairobi Suite" required/>
+
+    <label>Location</label>
+    <input type="text" id="bnbLocation" placeholder="City / Area" required/>
+
+    <label>Description</label>
+    <textarea id="bnbDesc" rows="4" placeholder="Short details..." required></textarea>
+
+    <label>Price per night (KES)</label>
+    <input type="number" id="bnbPrice" placeholder="e.g. 4500" required/>
+
+    <label>Image URLs (comma separated)</label>
+    <input type="text" id="imageUrls" placeholder="https://... , https://..."/>
+
+    <button type="submit" class="btn btn-primary">Post Listing</button>
+    <p id="postMsg" class="status"></p>
+  </form>
+</section>
+
+<footer><p>&copy; 2025 KaribuBnB • All rights reserved</p></footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
 </body>
-</html>
+      </html>
