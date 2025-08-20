@@ -1,41 +1,37 @@
-³<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listings - KaribuBnB</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KaribuBnB - Listings</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header>
-    <h1>BnB Listings</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="bnb-listings.html">Listings</a></li>
-        <li><a href="hosts.html">Hosts</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <h1>KaribuBnB</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a class="active" href="bnb-listings.html">Listings</a></li>
+      <li><a href="hosts.html">For Hosts</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main>
-    <section>
-      <h2>Available Listings</h2>
-      <p>Browse through our curated list of BnB properties across Kenya.</p>
-      <!-- Example Listing -->
-      <article class="listing">
-        <h3>Cozy Studio in Nairobi</h3>
-        <p>Perfect for business or leisure, near CBD. From Ksh 3,500/night.</p>
-        <button>Contact Host</button>
-      </article>
-    </section>
-  </main>
+<section>
+  <h2>Available BnBs</h2>
+  <div id="listingsContainer"></div>
+  <p id="listingsMsg" class="status"></p>
+</section>
 
-  <footer>
-    <p>© 2025 KaribuBnB. All rights reserved.</p>
-  </footer>
+<footer><p>&copy; 2025 KaribuBnB • All rights reserved</p></footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
