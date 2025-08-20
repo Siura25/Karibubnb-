@@ -1,34 +1,54 @@
-  <section class="section">
-    <div class="container">
-      <h3>Pay with M-Pesa or Bank</h3>
-      <p>To activate your host account, make a payment and you’ll be able to post immediately.</p>
-      <div class="paybox">
-        <div>
-          <h4>M-Pesa</h4>
-          <p><strong>Paybill/Till (Number):</strong> 0112226127</p>
-          <p><strong>Confirm via Email:</strong> <a href="mailto:karibubnb@gmail.com">karibubnb@gmail.com</a></p>
-        </div>
-        <div>
-          <h4>Bank (Optional)</h4>
-          <p><strong>Bank:</strong> Stanbic</p>
-          <p><strong>Account Name:</strong> Paul Brian Okoth Siura</p>
-          <p><strong>Account No.:</strong> 0100006846558</p>
-        </div>
-      </div>
-      <p class="muted">After payment, click “I’ve Paid” in the Hosts page to unlock posting.</p>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KaribuBnB - Home</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>KaribuBnB</h1>
+    <nav>
+      <ul>
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="bnb-listings.html">Listings</a></li>
+        <li><a href="hosts.html">For Hosts</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Stay • Connect • Experience Kenya</h2>
+    <p>Hosts post. Guests book. Chat directly via WhatsApp or call.</p>
+    <a href="bnb-listings.html" class="btn btn-primary">Browse Listings</a>
   </section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="quick">
-        <a class="btn wa" href="https://wa.me/254112226127" target="_blank">WhatsApp</a>
-        <a class="btn call" href="tel:+254112226127">Call</a>
-      </div>
-      <p>© 2025 KaribuBnB</p>
-    </div>
+  <section class="payment-section">
+    <h3>For Hosts — How to Pay</h3>
+    <p><strong>M-PESA:</strong> Send to <strong>0112226127</strong></p>
+    <p><strong>Email proof:</strong> <a href="mailto:karibubnb@gmail.com">karibubnb@gmail.com</a></p>
+    <p><strong>Bank (optional):</strong> Stanbic — Acc Name: <em>Paul Brian Okoth Siura</em> — Acc No: <em>0100006846558</em></p>
+    <a href="hosts.html" class="btn btn-success">Become a Host</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 KaribuBnB • All rights reserved</p>
   </footer>
 
+  <div class="quick-contact">
+    <a href="https://wa.me/254112226127">💬 WhatsApp</a>
+    <a href="tel:+254112226127">📞 Call</a>
+  </div>
+
+  <!-- Firebase + App (Compat build, no modules needed) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
