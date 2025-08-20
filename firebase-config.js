@@ -1,25 +1,22 @@
-// firebase-config.js
+// firebase-config.js  (Compat SDK)
+try {
+  // 1) Paste your real config here (Firebase Console → Project settings → Web app)
+  const firebaseConfig = {
+    apiKey: "PASTE",
+    authDomain: "PASTE.firebaseapp.com",
+    projectId: "PASTE",
+    storageBucket: "PASTE.appspot.com",
+    messagingSenderId: "PASTE",
+    appId: "PASTE"
+  };
 
-// Import the functions you need from Firebase SDK
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+  // 2) Init + Anonymous auth
+  firebase.initializeApp(firebaseConfig);
+  firebase.auth().signInAnonymously().catch(console.error);
 
-// TODO: Replace with your Firebase project configuration
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-const storage = getStorage(app);
-
-export { db, auth, storage };
+  // 3) Firestore handle
+  window.db = firebase.firestore();
+} catch (e) {
+  console.warn("Firebase not initialized yet. Paste your config in firebase-config.js", e);
+  window.db = null;
+}
