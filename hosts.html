@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Hosts - KaribuBnB</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Host Uploads - KaribuBnB</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -21,11 +22,53 @@
 </header>
 
 <section>
-  <h2>Become a Host</h2>
-  <p>Earn money by renting out your space to travelers.</p>
-  <p>Email us at <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a> to get started.</p>
+  <h2>Upload Your Property Images & Videos</h2>
+  <form id="uploadForm">
+    <input type="file" id="fileInput" accept="image/*,video/*" required />
+    <button type="submit">Upload</button>
+  </form>
 </section>
 
 <footer><p>&copy; 2025 KaribuBnB • All rights reserved</p></footer>
+
+<!-- Firebase Script -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+  import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
+    authDomain: "karibubnb.firebaseapp.com",
+    projectId: "karibubnb",
+    storageBucket: "karibubnb.firebasestorage.app",
+    messagingSenderId: "552053964240",
+    appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
+    measurementId: "G-TF8QRH3KEJ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const storage = getStorage(app);
+  const db = getFirestore(app);
+
+  document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const file = document.getElementById("fileInput").files[0];
+    if (!file) {
+      alert("Please select a file!");
+      return;
+    }
+
+    const storageRef = ref(storage, "uploads/" + file.name);
+    await uploadBytes(storageRef, file);
+    const url = await getDownloadURL(storageRef);
+
+    await addDoc(collection(db, "uploads"), { fileUrl: url, createdAt: new Date() });
+
+    alert("Upload successful!");
+  });
+</script>
 </body>
 </html>
