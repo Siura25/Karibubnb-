@@ -1,51 +1,159 @@
-/* Reset / Base */
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;line-height:1.6;background:#f7f8fa;color:#333}
+/* ===============================
+   KaribuBnB Global Styles
+   =============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Header / Nav */
-header{background:#2c3e50;color:#fff;text-align:center;padding:16px}
-nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:8px}
-nav a{color:#fff;text-decoration:none;font-weight:bold;padding:8px 12px;border-radius:6px}
-nav a:hover,nav a.active{background:#1abc9c}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: #f8f9fa;
+  color: #333;
+}
 
-/* Sections */
-section{padding:24px}
-.hero{background:#ecf0f1;text-align:center;border-bottom:1px solid #dde3e8}
-.hero h2{font-size:26px;margin-bottom:8px}
-.hero p{margin:6px 0 10px}
+/* ===============================
+   Header & Navigation
+   =============================== */
+header {
+  background: #0c5c2d; /* deep green */
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-/* Buttons */
-.btn{display:inline-block;padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:bold}
-.btn-primary{background:#2980b9;color:#fff}
-.btn-primary:hover{background:#3498db}
-.btn-success{background:#27ae60;color:#fff}
-.btn-success:hover{background:#2ecc71}
+header h1 {
+  font-size: 1.8rem;
+}
 
-/* Cards / Listings */
-.listing-card{background:#fff;border:1px solid #e6e9ed;border-radius:10px;padding:16px;margin:12px 0;box-shadow:0 2px 5px rgba(0,0,0,.06)}
-.listing-card img{width:100%;border-radius:8px;margin-bottom:10px}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
 
-/* Payment box */
-.payment-section{background:#fff;border:1px solid #e6e9ed;border-radius:10px;padding:16px;max-width:640px;margin:12px auto}
-.mock-check{display:block;margin:10px 0}
-.small-note{color:#667085;font-size:.9rem}
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
 
-/* Forms */
-.host-form{max-width:640px;margin:10px auto;display:flex;flex-direction:column;gap:10px}
-.host-form input,.host-form textarea{padding:10px;border:1px solid #cfd6de;border-radius:8px}
-.status{margin-top:8px}
+nav ul li a:hover,
+nav ul li a.active {
+  background: #f1c40f;
+  color: #0c5c2d;
+}
 
-/* Gallery */
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.gallery-grid img{width:100%;border-radius:10px}
+/* ===============================
+   Main Layout
+   =============================== */
+main {
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
 
-/* Footer */
-footer{background:#2c3e50;color:#fff;text-align:center;padding:14px;margin-top:24px}
+h2 {
+  margin-bottom: 15px;
+  color: #0c5c2d;
+  border-left: 5px solid #f1c40f;
+  padding-left: 10px;
+}
 
-/* Quick Contact floating */
-.quick-contact{position:fixed;right:12px;bottom:12px;display:flex;flex-direction:column;gap:8px;z-index:10}
-.quick-contact a{background:#1abc9c;color:#fff;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,.2)}
-.quick-contact a:hover{background:#159b83}
+/* ===============================
+   Cards (used in listings, hosts, etc.)
+   =============================== */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: transform 0.2s;
+}
 
-/* Success page */
-.success{text-align:center;max-width:640px;margin:40px auto;background:#fff;border:1px solid #e6e9ed;border-radius:10px;padding:24px}
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card img,
+.card video {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   Gallery Grid
+   =============================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.gallery-item {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.gallery-item img,
+.gallery-item video {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+/* ===============================
+   Buttons
+   =============================== */
+.btn {
+  display: inline-block;
+  background: #0c5c2d;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #f1c40f;
+  color: #0c5c2d;
+}
+
+/* ===============================
+   Footer
+   =============================== */
+footer {
+  background: #0c5c2d;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+/* ===============================
+   Responsive
+   =============================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+  }
+}
