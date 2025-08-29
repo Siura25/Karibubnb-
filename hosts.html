@@ -3,8 +3,46 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Host Uploads - KaribuBnB</title>
+  <title>KaribuBnB - Host Your Property</title>
   <link rel="stylesheet" href="style.css"/>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
+      authDomain: "karibubnb.firebaseapp.com",
+      projectId: "karibubnb",
+      storageBucket: "karibubnb.firebasestorage.app",
+      messagingSenderId: "552053964240",
+      appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
+      measurementId: "G-TF8QRH3KEJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const storage = getStorage(app);
+
+    // Handle image upload
+    window.uploadFile = async function () {
+      const fileInput = document.getElementById("propertyImage");
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Please choose an image first.");
+        return;
+      }
+
+      const storageRef = ref(storage, 'hosts/' + file.name);
+      await uploadBytes(storageRef, file);
+      const downloadURL = await getDownloadURL(storageRef);
+
+      document.getElementById("uploadResult").innerHTML =
+        `<p>✅ Upload successful! <a href="${downloadURL}" target="_blank">View Image</a></p>`;
+    };
+  </script>
 </head>
 <body>
 <header>
@@ -22,53 +60,39 @@
 </header>
 
 <section>
-  <h2>Upload Your Property Images & Videos</h2>
-  <form id="uploadForm">
-    <input type="file" id="fileInput" accept="image/*,video/*" required />
-    <button type="submit">Upload</button>
+  <h2>Host Your Property</h2>
+  <p>Upload your property details and reach thousands of guests.</p>
+
+  <form>
+    <label for="propertyName">Property Name:</label>
+    <input type="text" id="propertyName" required><br><br>
+
+    <label for="propertyDescription">Description:</label><br>
+    <textarea id="propertyDescription" rows="4" required></textarea><br><br>
+
+    <label for="propertyPrice">Price per Night (KES):</label>
+    <input type="number" id="propertyPrice" required><br><br>
+
+    <label for="propertyImage">Upload Property Image:</label>
+    <input type="file" id="propertyImage" accept="image/*"><br><br>
+
+    <button type="button" onclick="uploadFile()">Upload</button>
   </form>
+
+  <div id="uploadResult"></div>
 </section>
 
-<footer><p>&copy; 2025 KaribuBnB • All rights reserved</p></footer>
+<section class="payment">
+  <h2>Pay Hosting Fee with M-Pesa</h2>
+  <p><strong>Number:</strong> +254 112 226 127</p>
+  <p><strong>Account Name:</strong> KaribuBnB</p>
 
-<!-- Firebase Script -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
-  import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+  <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20have%20paid%20my%20hosting%20fee.%20Here%20is%20my%20transaction%20code%3A" 
+     class="btn" target="_blank">Confirm Payment on WhatsApp</a>
+</section>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
-    authDomain: "karibubnb.firebaseapp.com",
-    projectId: "karibubnb",
-    storageBucket: "karibubnb.firebasestorage.app",
-    messagingSenderId: "552053964240",
-    appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
-    measurementId: "G-TF8QRH3KEJ"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const storage = getStorage(app);
-  const db = getFirestore(app);
-
-  document.getElementById("uploadForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const file = document.getElementById("fileInput").files[0];
-    if (!file) {
-      alert("Please select a file!");
-      return;
-    }
-
-    const storageRef = ref(storage, "uploads/" + file.name);
-    await uploadBytes(storageRef, file);
-    const url = await getDownloadURL(storageRef);
-
-    await addDoc(collection(db, "uploads"), { fileUrl: url, createdAt: new Date() });
-
-    alert("Upload successful!");
-  });
-</script>
+<footer>
+  <p>&copy; 2025 KaribuBnB • All rights reserved</p>
+</footer>
 </body>
-</html>
+  </html>
