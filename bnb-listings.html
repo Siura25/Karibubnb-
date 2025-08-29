@@ -3,27 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KaribuBnB - Listings</title>
+  <title>Contact Us - KaribuBnB</title>
   <link rel="stylesheet" href="style.css"/>
-
-  <!-- Firebase SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
-      authDomain: "karibubnb.firebaseapp.com",
-      projectId: "karibubnb",
-      storageBucket: "karibubnb.firebasestorage.app",
-      messagingSenderId: "552053964240",
-      appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
-      measurementId: "G-TF8QRH3KEJ"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
 </head>
 <body>
 <header>
@@ -31,43 +12,32 @@
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a class="active" href="bnb-listings.html">Listings</a></li>
+      <li><a href="bnb-listings.html">Listings</a></li>
       <li><a href="hosts.html">For Hosts</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a class="active" href="contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
 
 <section>
-  <h2>Available Listings</h2>
-  <p>Explore some of our featured stays:</p>
-
-  <div class="listing">
-    <h3>Cozy Nairobi Apartment</h3>
-    <p>1 bedroom • WiFi • Close to CBD</p>
-    <p>Price: KES 3,000/night</p>
-    <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20want%20to%20book%20the%20Nairobi%20apartment." 
-       class="btn" target="_blank">Book Now</a>
-  </div>
-
-  <div class="listing">
-    <h3>Diani Beach Cottage</h3>
-    <p>2 bedrooms • Ocean view • Private garden</p>
-    <p>Price: KES 7,500/night</p>
-    <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20want%20to%20book%20the%20Diani%20cottage." 
-       class="btn" target="_blank">Book Now</a>
-  </div>
+  <h2>Contact Us</h2>
+  <p>Have questions? Reach us directly:</p>
+  <ul>
+    <li><strong>Phone:</strong> +254 112 226 127</li>
+    <li><strong>Email:</strong> support@karibubnb.com</li>
+    <li><strong>WhatsApp:</strong> <a href="https://wa.me/254112226127" target="_blank">Chat with us</a></li>
+  </ul>
 </section>
 
 <section class="payment">
-  <h2>Pay with M-Pesa</h2>
-  <p>Send payment to:</p>
-  <p><strong>M-Pesa Number:</strong> +254 112 226 127</p>
+  <h2>Pay Hosting Fee with M-Pesa</h2>
+  <p>Use the details below to activate your listing:</p>
+  <p><strong>Number:</strong> +254 112 226 127</p>
   <p><strong>Account Name:</strong> KaribuBnB</p>
 
-  <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20have%20paid%20for%20my%20stay.%20Here%20is%20my%20transaction%20code%3A" 
+  <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20have%20paid%20my%20hosting%20fee.%20Here%20is%20my%20transaction%20code%3A" 
      class="btn" target="_blank">Confirm Payment on WhatsApp</a>
 </section>
 
@@ -75,4 +45,4 @@
   <p>&copy; 2025 KaribuBnB • All rights reserved</p>
 </footer>
 </body>
-</html>
+  </html>
