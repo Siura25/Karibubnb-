@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KaribuBnB - Home</title>
   <link rel="stylesheet" href="style.css"/>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
+      authDomain: "karibubnb.firebaseapp.com",
+      projectId: "karibubnb",
+      storageBucket: "karibubnb.firebasestorage.app",
+      messagingSenderId: "552053964240",
+      appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
+      measurementId: "G-TF8QRH3KEJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </head>
 <body>
 <header>
@@ -23,24 +42,22 @@
 
 <section>
   <h2>Welcome to KaribuBnB</h2>
-  <p>Find affordable and comfortable stays across Kenya. Whether you are a guest looking for a home or a host listing your property, KaribuBnB is your trusted partner.</p>
+  <p>Discover affordable stays and unique experiences across Kenya. Book with ease or become a host today!</p>
 </section>
 
-<footer><p>&copy; 2025 KaribuBnB • All rights reserved</p></footer>
+<section class="payment">
+  <h2>Pay with M-Pesa</h2>
+  <p>To complete your booking, send payment to:</p>
+  <p><strong>M-Pesa Number:</strong> +254 112 226 127</p>
+  <p><strong>Account Name:</strong> KaribuBnB</p>
 
-<!-- Firebase Config -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-  const firebaseConfig = {
-    apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
-    authDomain: "karibubnb.firebaseapp.com",
-    projectId: "karibubnb",
-    storageBucket: "karibubnb.firebasestorage.app",
-    messagingSenderId: "552053964240",
-    appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
-    measurementId: "G-TF8QRH3KEJ"
-  };
-  initializeApp(firebaseConfig);
-</script>
+  <p>After sending, confirm your payment by sharing the transaction code:</p>
+  <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20have%20completed%20my%20payment.%20My%20M-Pesa%20transaction%20code%20is%3A"
+     class="btn" target="_blank">Confirm on WhatsApp</a>
+</section>
+
+<footer>
+  <p>&copy; 2025 KaribuBnB • All rights reserved</p>
+</footer>
 </body>
 </html>
