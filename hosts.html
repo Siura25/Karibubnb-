@@ -1,98 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KaribuBnB - Host Your Property</title>
-  <link rel="stylesheet" href="style.css"/>
-
-  <!-- Firebase SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
-      authDomain: "karibubnb.firebaseapp.com",
-      projectId: "karibubnb",
-      storageBucket: "karibubnb.firebasestorage.app",
-      messagingSenderId: "552053964240",
-      appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
-      measurementId: "G-TF8QRH3KEJ"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const storage = getStorage(app);
-
-    // Handle image upload
-    window.uploadFile = async function () {
-      const fileInput = document.getElementById("propertyImage");
-      const file = fileInput.files[0];
-      if (!file) {
-        alert("Please choose an image first.");
-        return;
-      }
-
-      const storageRef = ref(storage, 'hosts/' + file.name);
-      await uploadBytes(storageRef, file);
-      const downloadURL = await getDownloadURL(storageRef);
-
-      document.getElementById("uploadResult").innerHTML =
-        `<p>✅ Upload successful! <a href="${downloadURL}" target="_blank">View Image</a></p>`;
-    };
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hosts - KaribuBnB</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>KaribuBnB</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="bnb-listings.html">Listings</a></li>
-      <li><a class="active" href="hosts.html">For Hosts</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <h1>KaribuBnB</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bnb-listings.html">Listings</a></li>
+        <li><a href="hosts.html" class="active">Hosts</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<section>
-  <h2>Host Your Property</h2>
-  <p>Upload your property details and reach thousands of guests.</p>
+  <main>
+    <section class="card">
+      <h2>Become a Host</h2>
+      <p>List your property with KaribuBnB and start earning. Hosting fee: <strong>KES 500</strong>.</p>
+      <p>Pay directly via M-Pesa to: <strong>0112226127</strong></p>
+      <p>After payment, send us confirmation at <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a></p>
+    </section>
+  </main>
 
-  <form>
-    <label for="propertyName">Property Name:</label>
-    <input type="text" id="propertyName" required><br><br>
-
-    <label for="propertyDescription">Description:</label><br>
-    <textarea id="propertyDescription" rows="4" required></textarea><br><br>
-
-    <label for="propertyPrice">Price per Night (KES):</label>
-    <input type="number" id="propertyPrice" required><br><br>
-
-    <label for="propertyImage">Upload Property Image:</label>
-    <input type="file" id="propertyImage" accept="image/*"><br><br>
-
-    <button type="button" onclick="uploadFile()">Upload</button>
-  </form>
-
-  <div id="uploadResult"></div>
-</section>
-
-<section class="payment">
-  <h2>Pay Hosting Fee with M-Pesa</h2>
-  <p><strong>Number:</strong> +254 112 226 127</p>
-  <p><strong>Account Name:</strong> KaribuBnB</p>
-
-  <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20have%20paid%20my%20hosting%20fee.%20Here%20is%20my%20transaction%20code%3A" 
-     class="btn" target="_blank">Confirm Payment on WhatsApp</a>
-</section>
-
-<footer>
-  <p>&copy; 2025 KaribuBnB • All rights reserved</p>
-</footer>
+  <footer>
+    <p>© 2025 KaribuBnB | Email: <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a> | Phone: <a href="tel:0112226127">0112226127</a></p>
+  </footer>
 </body>
 </html>
