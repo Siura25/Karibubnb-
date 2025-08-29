@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us - KaribuBnB</title>
+  <title>KaribuBnB - Listings</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -12,37 +12,51 @@
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="bnb-listings.html">Listings</a></li>
+      <li><a class="active" href="bnb-listings.html">Listings</a></li>
       <li><a href="hosts.html">For Hosts</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a class="active" href="contact.html">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
 
 <section>
-  <h2>Contact Us</h2>
-  <p>Have questions? Reach us directly:</p>
-  <ul>
-    <li><strong>Phone:</strong> +254 112 226 127</li>
-    <li><strong>Email:</strong> support@karibubnb.com</li>
-    <li><strong>WhatsApp:</strong> <a href="https://wa.me/254112226127" target="_blank">Chat with us</a></li>
-  </ul>
-</section>
+  <h2>Available Stays</h2>
+  <div class="listing-grid">
 
-<section class="payment">
-  <h2>Pay Hosting Fee with M-Pesa</h2>
-  <p>Use the details below to activate your listing:</p>
-  <p><strong>Number:</strong> +254 112 226 127</p>
-  <p><strong>Account Name:</strong> KaribuBnB</p>
+    <!-- Listing 1 -->
+    <div class="listing-card">
+      <img src="images/listing1.jpg" alt="Cozy Apartment in Nairobi">
+      <h3>Cozy Apartment in Nairobi</h3>
+      <p>2 guests • 1 bedroom • Wifi</p>
+      <p><strong>KES 3,500/night</strong></p>
+      <a href="tel:+254112226127" class="btn">Book Now</a>
+    </div>
 
-  <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20have%20paid%20my%20hosting%20fee.%20Here%20is%20my%20transaction%20code%3A" 
-     class="btn" target="_blank">Confirm Payment on WhatsApp</a>
+    <!-- Listing 2 -->
+    <div class="listing-card">
+      <img src="images/listing2.jpg" alt="Beach House in Mombasa">
+      <h3>Beach House in Mombasa</h3>
+      <p>6 guests • 3 bedrooms • Ocean View</p>
+      <p><strong>KES 12,000/night</strong></p>
+      <a href="tel:+254112226127" class="btn">Book Now</a>
+    </div>
+
+    <!-- Listing 3 -->
+    <div class="listing-card">
+      <img src="images/listing3.jpg" alt="Safari Lodge in Maasai Mara">
+      <h3>Safari Lodge in Maasai Mara</h3>
+      <p>4 guests • 2 bedrooms • Full board</p>
+      <p><strong>KES 20,000/night</strong></p>
+      <a href="tel:+254112226127" class="btn">Book Now</a>
+    </div>
+
+  </div>
 </section>
 
 <footer>
   <p>&copy; 2025 KaribuBnB • All rights reserved</p>
 </footer>
 </body>
-  </html>
+</html>
