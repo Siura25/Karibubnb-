@@ -5,34 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KaribuBnB - Home</title>
   <link rel="stylesheet" href="style.css"/>
-
-  <!-- Firebase SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
-      authDomain: "karibubnb.firebaseapp.com",
-      projectId: "karibubnb",
-      storageBucket: "karibubnb.firebasestorage.app",
-      messagingSenderId: "552053964240",
-      appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
-      measurementId: "G-TF8QRH3KEJ"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
 </head>
 <body>
+
 <header>
-  <h1>KaribuBnB</h1>
+  <div class="logo">
+    <!-- Uncomment below when you add logo.png -->
+    <!-- <img src="logo.png" alt="KaribuBnB Logo"> -->
+    <h1>KaribuBnB</h1>
+  </div>
   <nav>
     <ul>
-      <li><a class="active" href="index.html">Home</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="bnb-listings.html">Listings</a></li>
-      <li><a href="hosts.html">For Hosts</a></li>
+      <li><a href="hosts.html">Hosts</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -40,24 +26,30 @@
   </nav>
 </header>
 
-<section>
+<section class="hero">
   <h2>Welcome to KaribuBnB</h2>
-  <p>Discover affordable stays and unique experiences across Kenya. Book with ease or become a host today!</p>
+  <p>Your trusted platform to discover and host unique stays across Kenya.</p>
+  <a href="bnb-listings.html" class="btn">Explore Listings</a>
 </section>
 
-<section class="payment">
-  <h2>Pay with M-Pesa</h2>
-  <p>To complete your booking, send payment to:</p>
-  <p><strong>M-Pesa Number:</strong> +254 112 226 127</p>
-  <p><strong>Account Name:</strong> KaribuBnB</p>
-
-  <p>After sending, confirm your payment by sharing the transaction code:</p>
-  <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20have%20completed%20my%20payment.%20My%20M-Pesa%20transaction%20code%20is%3A"
-     class="btn" target="_blank">Confirm on WhatsApp</a>
+<section class="features">
+  <div class="feature">
+    <h3>Discover Stays</h3>
+    <p>Find unique and affordable accommodations tailored to your needs.</p>
+  </div>
+  <div class="feature">
+    <h3>Host Easily</h3>
+    <p>Share your space with travelers and earn money securely.</p>
+  </div>
+  <div class="feature">
+    <h3>Secure Payments</h3>
+    <p>All payments go directly through M-Pesa for safety and convenience.</p>
+  </div>
 </section>
 
 <footer>
   <p>&copy; 2025 KaribuBnB • All rights reserved</p>
 </footer>
+
 </body>
-</html>
+    </html>
