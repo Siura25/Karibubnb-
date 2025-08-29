@@ -1,79 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery - KaribuBnB</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>KaribuBnB</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="bnb-listings.html">Listings</a></li>
-      <li><a href="hosts.html">For Hosts</a></li>
-      <li><a class="active" href="gallery.html">Gallery</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <h1>KaribuBnB</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bnb-listings.html">Listings</a></li>
+        <li><a href="hosts.html">Hosts</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<section>
-  <h2>Property Gallery</h2>
-  <div id="gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:15px;">
-    <!-- Uploaded content will appear here -->
-  </div>
-</section>
+  <main>
+    <section class="card gallery">
+      <h2>Photo Gallery</h2>
+      <div class="gallery-grid">
+        <img src="images/room1.jpg" alt="Room 1">
+        <img src="images/room2.jpg" alt="Room 2">
+        <img src="images/room3.jpg" alt="Room 3">
+        <img src="images/room4.jpg" alt="Room 4">
+      </div>
+    </section>
+  </main>
 
-<footer><p>&copy; 2025 KaribuBnB • All rights reserved</p></footer>
-
-<!-- Firebase + Gallery Logic -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
-    authDomain: "karibubnb.firebaseapp.com",
-    projectId: "karibubnb",
-    storageBucket: "karibubnb.firebasestorage.app",
-    messagingSenderId: "552053964240",
-    appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
-    measurementId: "G-TF8QRH3KEJ"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  async function loadGallery() {
-    const galleryDiv = document.getElementById("gallery");
-    galleryDiv.innerHTML = "";
-
-    const snapshot = await getDocs(collection(db, "uploads"));
-    snapshot.forEach(doc => {
-      const { fileUrl } = doc.data();
-      let element;
-
-      if (fileUrl.match(/\.(mp4|webm|ogg)$/i)) {
-        element = document.createElement("video");
-        element.src = fileUrl;
-        element.controls = true;
-        element.style.width = "100%";
-      } else {
-        element = document.createElement("img");
-        element.src = fileUrl;
-        element.style.width = "100%";
-        element.style.borderRadius = "10px";
-      }
-
-      galleryDiv.appendChild(element);
-    });
-  }
-
-  loadGallery();
-</script>
+  <footer>
+    <p>© 2025 KaribuBnB | Email: <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a> | Phone: <a href="tel:0112226127">0112226127</a></p>
+  </footer>
 </body>
-    </html>
+</html>
