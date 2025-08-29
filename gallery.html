@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery - KaribuBnB</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -21,11 +22,58 @@
 </header>
 
 <section>
-  <h2>Gallery</h2>
-  <p>Take a look at some of our featured stays.</p>
-  <p>Want to feature your space? Email us: <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a></p>
+  <h2>Property Gallery</h2>
+  <div id="gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:15px;">
+    <!-- Uploaded content will appear here -->
+  </div>
 </section>
 
 <footer><p>&copy; 2025 KaribuBnB • All rights reserved</p></footer>
+
+<!-- Firebase + Gallery Logic -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
+    authDomain: "karibubnb.firebaseapp.com",
+    projectId: "karibubnb",
+    storageBucket: "karibubnb.firebasestorage.app",
+    messagingSenderId: "552053964240",
+    appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
+    measurementId: "G-TF8QRH3KEJ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  async function loadGallery() {
+    const galleryDiv = document.getElementById("gallery");
+    galleryDiv.innerHTML = "";
+
+    const snapshot = await getDocs(collection(db, "uploads"));
+    snapshot.forEach(doc => {
+      const { fileUrl } = doc.data();
+      let element;
+
+      if (fileUrl.match(/\.(mp4|webm|ogg)$/i)) {
+        element = document.createElement("video");
+        element.src = fileUrl;
+        element.controls = true;
+        element.style.width = "100%";
+      } else {
+        element = document.createElement("img");
+        element.src = fileUrl;
+        element.style.width = "100%";
+        element.style.borderRadius = "10px";
+      }
+
+      galleryDiv.appendChild(element);
+    });
+  }
+
+  loadGallery();
+</script>
 </body>
 </html>
