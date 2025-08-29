@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KaribuBnB - Listings</title>
   <link rel="stylesheet" href="style.css"/>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
+      authDomain: "karibubnb.firebaseapp.com",
+      projectId: "karibubnb",
+      storageBucket: "karibubnb.firebasestorage.app",
+      messagingSenderId: "552053964240",
+      appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
+      measurementId: "G-TF8QRH3KEJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </head>
 <body>
 <header>
@@ -23,24 +42,37 @@
 
 <section>
   <h2>Available Listings</h2>
-  <p>Discover properties available for booking. More features coming soon!</p>
+  <p>Explore some of our featured stays:</p>
+
+  <div class="listing">
+    <h3>Cozy Nairobi Apartment</h3>
+    <p>1 bedroom • WiFi • Close to CBD</p>
+    <p>Price: KES 3,000/night</p>
+    <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20want%20to%20book%20the%20Nairobi%20apartment." 
+       class="btn" target="_blank">Book Now</a>
+  </div>
+
+  <div class="listing">
+    <h3>Diani Beach Cottage</h3>
+    <p>2 bedrooms • Ocean view • Private garden</p>
+    <p>Price: KES 7,500/night</p>
+    <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20want%20to%20book%20the%20Diani%20cottage." 
+       class="btn" target="_blank">Book Now</a>
+  </div>
 </section>
 
-<footer><p>&copy; 2025 KaribuBnB • All rights reserved</p></footer>
+<section class="payment">
+  <h2>Pay with M-Pesa</h2>
+  <p>Send payment to:</p>
+  <p><strong>M-Pesa Number:</strong> +254 112 226 127</p>
+  <p><strong>Account Name:</strong> KaribuBnB</p>
 
-<!-- Firebase Config -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-  const firebaseConfig = {
-    apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
-    authDomain: "karibubnb.firebaseapp.com",
-    projectId: "karibubnb",
-    storageBucket: "karibubnb.firebasestorage.app",
-    messagingSenderId: "552053964240",
-    appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
-    measurementId: "G-TF8QRH3KEJ"
-  };
-  initializeApp(firebaseConfig);
-</script>
+  <a href="https://wa.me/254112226127?text=Hello%20KaribuBnB%2C%20I%20have%20paid%20for%20my%20stay.%20Here%20is%20my%20transaction%20code%3A" 
+     class="btn" target="_blank">Confirm Payment on WhatsApp</a>
+</section>
+
+<footer>
+  <p>&copy; 2025 KaribuBnB • All rights reserved</p>
+</footer>
 </body>
 </html>
