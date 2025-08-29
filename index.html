@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KaribuBnB - Home</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -22,10 +23,24 @@
 
 <section>
   <h2>Welcome to KaribuBnB</h2>
-  <p>Discover affordable, unique stays across Kenya.</p>
-  <p>Email us at <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a></p>
+  <p>Find affordable and comfortable stays across Kenya. Whether you are a guest looking for a home or a host listing your property, KaribuBnB is your trusted partner.</p>
 </section>
 
 <footer><p>&copy; 2025 KaribuBnB • All rights reserved</p></footer>
+
+<!-- Firebase Config -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyBtJ9Zbw414U5_21g3uC1YWTVX0ClGaD20",
+    authDomain: "karibubnb.firebaseapp.com",
+    projectId: "karibubnb",
+    storageBucket: "karibubnb.firebasestorage.app",
+    messagingSenderId: "552053964240",
+    appId: "1:552053964240:web:352e1d659ecd2332eecdd5",
+    measurementId: "G-TF8QRH3KEJ"
+  };
+  initializeApp(firebaseConfig);
+</script>
 </body>
 </html>
