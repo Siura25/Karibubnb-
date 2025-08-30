@@ -1,4 +1,3 @@
-!-- hosts-dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,23 +20,25 @@
   </header>
 
   <main>
-    <section class="dashboard">
+    <section>
+      <h2>Welcome, <span id="hostName">Loading...</span></h2>
+      <button id="logoutBtn">Logout</button>
+    </section>
+
+    <section>
       <h2>Your Bookings</h2>
-      <table id="bookingsTable">
+      <table border="1" cellpadding="8" id="bookingsTable">
         <thead>
           <tr>
             <th>Guest Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Check-in</th>
-            <th>Check-out</th>
-            <th>Property</th>
+            <th>Guest Email</th>
+            <th>Listing</th>
+            <th>Date</th>
             <th>Status</th>
-            <th>Action</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Bookings will be loaded here -->
+        <tbody id="bookingsBody">
+          <tr><td colspan="5">Loading bookings...</td></tr>
         </tbody>
       </table>
     </section>
