@@ -5,47 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Host Dashboard - KaribuBnB</title>
   <link rel="stylesheet" href="style.css">
-  <script type="module" src="host-dashboard.js"></script>
 </head>
 <body>
   <header>
-    <h1>Host Dashboard</h1>
+    <h1>🏠 Host Dashboard</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="hosts.html">Become a Host</a>
       <a href="bnb-listings.html">Listings</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
+      <a href="host-register.html">Register</a>
+      <a href="hosts.html">Hosts</a>
+      <button id="logoutBtn">Logout</button>
     </nav>
   </header>
 
   <main>
-    <section>
-      <h2>Welcome, <span id="hostName">Loading...</span></h2>
-      <button id="logoutBtn">Logout</button>
-    </section>
-
-    <section>
-      <h2>Your Bookings</h2>
-      <table border="1" cellpadding="8" id="bookingsTable">
+    <section class="dashboard-section">
+      <h2>📖 Bookings</h2>
+      <table class="dashboard-table">
         <thead>
           <tr>
-            <th>Guest Name</th>
-            <th>Guest Email</th>
-            <th>Listing</th>
+            <th>Guest</th>
+            <th>Email</th>
             <th>Date</th>
             <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
-        <tbody id="bookingsBody">
-          <tr><td colspan="5">Loading bookings...</td></tr>
+        <tbody id="bookingsTable">
+          <!-- Filled dynamically -->
         </tbody>
       </table>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 KaribuBnB. All Rights Reserved.</p>
+    <p>&copy; 2025 KaribuBnB</p>
   </footer>
+
+  <script type="module" src="app.js"></script>
 </body>
-</html>
+    </html>
