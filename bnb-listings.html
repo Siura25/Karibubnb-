@@ -1,47 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KaribuBnB - Listings</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KaribuBnB Listings</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="app.js" defer></script>
 </head>
 <body>
   <header>
-    <h1>KaribuBnB</h1>
+    <h1>Available BnBs</h1>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="bnb-listings.html" class="active">Listings</a></li>
-        <li><a href="hosts.html">Hosts</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="hosts.html">Become a Host</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="hosts-dashboard.html">Dashboard</a>
     </nav>
   </header>
 
-  <section class="listings">
-    <h2>Available Stays</h2>
-    <div class="listing-card">
-      <img src="images/house1.jpg" alt="House 1">
-      <h3>Cozy Apartment in Nairobi</h3>
-      <p>From KES 2,000 / night</p>
-      <a href="https://wa.me/254112226127" class="btn">Book Now</a>
-    </div>
+  <main>
+    <section class="bnb-listings" id="bnb-listings">
+      <!-- Example Listing -->
+      <div class="bnb-card" data-host-phone="0112226127" data-host-id="host1">
+        <img src="images/sample-bnb.jpg" alt="Sample BnB" />
+        <h3>Cozy Apartment in Nairobi</h3>
+        <p>2 Guests · 1 Bedroom · WiFi</p>
+        <button class="book-now-btn">Book Now</button>
+      </div>
+    </section>
+  </main>
 
-    <div class="listing-card">
-      <img src="images/house2.jpg" alt="House 2">
-      <h3>Beach House in Mombasa</h3>
-      <p>From KES 3,500 / night</p>
-      <a href="https://wa.me/254112226127" class="btn">Book Now</a>
+  <!-- Booking Form Modal -->
+  <div id="bookingModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Book This Stay</h2>
+      <form id="bookingForm">
+        <input type="text" id="guestName" placeholder="Your Name" required />
+        <input type="date" id="checkIn" required />
+        <input type="date" id="checkOut" required />
+        <input type="number" id="guests" placeholder="Number of Guests" min="1" required />
+        <button type="submit">Confirm Booking</button>
+      </form>
     </div>
-  </section>
+  </div>
 
   <footer>
-    <p>© 2025 KaribuBnB | Contact: 
-      <a href="tel:0112226127">0112226127</a> | 
-      <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a>
-    </p>
+    <p>&copy; 2025 KaribuBnB. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Modal logic
+    const modal = document.getElementById("bookingModal");
+    const closeBtn = document.querySelector(".close-btn");
+    let selectedHostPhone = "";
+    let selectedHostId = "";
+
+    document.querySelectorAll(".book-now-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const card = e.target.closest(".bnb-card");
+        selectedHostPhone = card.dataset.hostPhone;
+        selectedHostId = card.dataset.hostId;
+        modal.classList.remove("hidden");
+      });
+    });
+
+    closeBtn.onclick = () => modal.classList.add("hidden");
+
+    // Handle booking submission
+    document.getElementById("bookingForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const bookingData = {
+        guestName: document.getElementById("guestName").value,
+        checkIn: document.getElementById("checkIn").value,
+        checkOut: document.getElementById("checkOut").value,
+        guests: document.getElementById("guests").value,
+        hostId: selectedHostId,
+        hostPhone: selectedHostPhone,
+        timestamp: new Date().toISOString(),
+      };
+
+      try {
+        // Save booking in Firestore (handled in app.js)
+        await saveBooking(bookingData);
+
+        // Redirect to WhatsApp with prefilled message
+        const message = `Hello, I would like to book your BnB:\nName: ${bookingData.guestName}\nCheck-in: ${bookingData.checkIn}\nCheck-out: ${bookingData.checkOut}\nGuests: ${bookingData.guests}`;
+        const whatsappUrl = `https://wa.me/254${selectedHostPhone.slice(1)}?text=${encodeURIComponent(message)}`;
+        window.location.href = whatsappUrl;
+      } catch (error) {
+        alert("Error saving booking: " + error.message);
+      }
+    });
+  </script>
 </body>
 </html>
