@@ -86,14 +86,4 @@
         // Save booking in Firestore (handled in app.js)
         await saveBooking(bookingData);
 
-        // Redirect to WhatsApp with prefilled message
-        const message = `Hello, I would like to book your BnB:\nName: ${bookingData.guestName}\nCheck-in: ${bookingData.checkIn}\nCheck-out: ${bookingData.checkOut}\nGuests: ${bookingData.guests}`;
-        const whatsappUrl = `https://wa.me/254${selectedHostPhone.slice(1)}?text=${encodeURIComponent(message)}`;
-        window.location.href = whatsappUrl;
-      } catch (error) {
-        alert("Error saving booking: " + error.message);
-      }
-    });
-  </script>
-</body>
-</html>
+        // Redirect to 
