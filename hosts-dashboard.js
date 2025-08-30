@@ -1,7 +1,7 @@
 // host-dashboard.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, collection, query, where, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // TODO: Replace with your Firebase config
 const firebaseConfig = {
@@ -18,99 +18,64 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-const loginSection = document.getElementById("loginSection");
-const dashboardSection = document.getElementById("dashboardSection");
-const loginForm = document.getElementById("loginForm");
-const loginMessage = document.getElementById("loginMessage");
+// UI elements
+const hostNameEl = document.getElementById("hostName");
+const bookingsBody = document.getElementById("bookingsBody");
 const logoutBtn = document.getElementById("logoutBtn");
 
-// Handle login
-loginForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const email = document.getElementById("loginEmail").value;
-  const password = document.getElementById("loginPassword").value;
-
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    loginMessage.textContent = "Login successful!";
-  } catch (err) {
-    loginMessage.textContent = "Error: " + err.message;
+// Monitor auth state
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    window.location.href = "host-register.html"; // if not logged in → send to register/login
+    return;
   }
-});
 
-// Handle logout
-logoutBtn.addEventListener("click", async () => {
-  await signOut(auth);
-});
-
-// Auth state listener
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    loginSection.style.display = "none";
-    dashboardSection.style.display = "block";
-    loadBookings();
+  // Get host info
+  const hostDoc = await getDoc(doc(db, "hosts", user.uid));
+  if (hostDoc.exists()) {
+    hostNameEl.textContent = hostDoc.data().name;
   } else {
-    loginSection.style.display = "block";
-    dashboardSection.style.display = "none";
+    hostNameEl.textContent = user.email;
   }
+
+  // Load host's bookings
+  loadBookings(user.uid);
 });
 
-// Load bookings
-async function loadBookings() {
-  const tableBody = document.querySelector("#bookingsTable tbody");
-  tableBody.innerHTML = "<tr><td colspan='8'>Loading...</td></tr>";
-
+// Load bookings for this host
+async function loadBookings(hostUid) {
   try {
-    const querySnapshot = await getDocs(collection(db, "bookings"));
-    tableBody.innerHTML = "";
+    const q = query(collection(db, "bookings"), where("hostUid", "==", hostUid));
+    const snapshot = await getDocs(q);
 
-    querySnapshot.forEach((docSnap) => {
+    bookingsBody.innerHTML = "";
+
+    if (snapshot.empty) {
+      bookingsBody.innerHTML = `<tr><td colspan="5">No bookings yet.</td></tr>`;
+      return;
+    }
+
+    snapshot.forEach(docSnap => {
       const booking = docSnap.data();
       const row = `
         <tr>
-          <td>${booking.name || "N/A"}</td>
-          <td>${booking.email || "N/A"}</td>
-          <td>${booking.phone || "N/A"}</td>
-          <td>${booking.checkin || "-"}</td>
-          <td>${booking.checkout || "-"}</td>
-          <td>${booking.property || "-"}</td>
-          <td id="status-${docSnap.id}">${booking.status || "Pending"}</td>
-          <td>
-            <button class="approve-btn" data-id="${docSnap.id}">Approve</button>
-            <button class="reject-btn" data-id="${docSnap.id}">Reject</button>
-          </td>
+          <td>${booking.guestName}</td>
+          <td>${booking.guestEmail}</td>
+          <td>${booking.listingTitle}</td>
+          <td>${booking.date}</td>
+          <td>${booking.status}</td>
         </tr>
       `;
-      tableBody.insertAdjacentHTML("beforeend", row);
+      bookingsBody.innerHTML += row;
     });
-
-    if (querySnapshot.empty) {
-      tableBody.innerHTML = "<tr><td colspan='8'>No bookings found.</td></tr>";
-    }
-
-    // Event listeners for Approve/Reject
-    document.querySelectorAll(".approve-btn").forEach(btn =>
-      btn.addEventListener("click", () => updateStatus(btn.dataset.id, "Approved"))
-    );
-    document.querySelectorAll(".reject-btn").forEach(btn =>
-      btn.addEventListener("click", () => updateStatus(btn.dataset.id, "Rejected"))
-    );
-
-  } catch (e) {
-    console.error("Error loading bookings:", e);
-    tableBody.innerHTML = "<tr><td colspan='8'>Error loading bookings.</td></tr>";
+  } catch (err) {
+    console.error("Error loading bookings:", err);
+    bookingsBody.innerHTML = `<tr><td colspan="5">Error loading bookings.</td></tr>`;
   }
 }
 
-// Update booking status
-async function updateStatus(bookingId, newStatus) {
-  try {
-    const bookingRef = doc(db, "bookings", bookingId);
-    await updateDoc(bookingRef, { status: newStatus });
-    document.getElementById(`status-${bookingId}`).textContent = newStatus;
-    alert(`Booking updated to "${newStatus}"`);
-  } catch (e) {
-    console.error("Error updating status:", e);
-    alert("Failed to update booking status.");
-  }
-  }
+// Logout
+logoutBtn.addEventListener("click", async () => {
+  await signOut(auth);
+  window.location.href = "index.html";
+});
