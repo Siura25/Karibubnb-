@@ -1,4 +1,4 @@
-// ✅ Firebase Config (replace with your project details)
+/ ✅ Firebase Config (replace with your project details)
 var firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_PROJECT.firebaseapp.com",
@@ -121,4 +121,4 @@ if (window.location.pathname.includes("host-dashboard.html")) {
 function logout() {
   localStorage.removeItem("hostEmail");
   window.location.href = "index.html";
-  }
+      }
