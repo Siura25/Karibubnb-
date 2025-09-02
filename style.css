@@ -1,54 +1,33 @@
-/* ;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
 }
-
-.dashboard table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-
-.dashboard th, .dashboard td {
-  padding: 0.8rem;
-  border: 1px solid #ddd;
+header {
+  background: #0077cc;
+  color: white;
+  padding: 15px;
   text-align: center;
 }
-
-.dashboard th {
-  background: #0d6efd;
+nav a {
+  margin: 0 10px;
   color: white;
+  text-decoration: none;
 }
-
-/* Subscription Status */
-.status-active {
-  color: green;
-  font-weight: bold;
+form {
+  margin: 20px auto;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
 }
-
-.status-expired {
-  color: red;
-  font-weight: bold;
+input, button {
+  padding: 10px;
+  margin: 5px 0;
 }
-
-/* Footer */
-footer {
-  background: #0d6efd;
+button {
+  background: #0077cc;
   color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .card {
-    margin: 0.5rem;
-  }
+  border: none;
+  cursor: pointer;
 }
