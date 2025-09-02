@@ -1,131 +1,124 @@
-// Firebase Config
-const firebaseConfig = {
+// ✅ Firebase Config (replace with your project details)
+var firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_PROJECT.firebaseapp.com",
   projectId: "YOUR_PROJECT",
   storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "XXXX",
-  appId: "XXXX"
+  messagingSenderId: "xxxx",
+  appId: "xxxx"
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// ---------------- REGISTER HOST ----------------
-const registerForm = document.getElementById("registerForm");
-if (registerForm) {
-  registerForm.addEventListener("submit", async (e) => {
+// ✅ Registration
+const hostForm = document.getElementById("host-register-form");
+if (hostForm) {
+  hostForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const property = document.getElementById("property").value;
+    const mediaFiles = document.getElementById("media").files;
 
-    const host = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      phone: document.getElementById("phone").value,
-      property: {
-        title: document.getElementById("title").value,
-        location: document.getElementById("location").value,
-        description: document.getElementById("description").value,
-        media: document.getElementById("mediaUrls").value.split(",").map(x => x.trim())
-      },
-      subscription: {
-        status: "active",
-        startDate: Date.now(),
-        endDate: Date.now() + 30 * 24 * 60 * 60 * 1000 // 30 days trial
-      }
-    };
+    const expiryDate = new Date();
+    expiryDate.setMonth(expiryDate.getMonth() + 1);
 
-    await db.collection("hosts").add(host);
-    alert("Property registered successfully! Trial is 30 days free.");
-    window.location.href = "host-dashboard.html";
+    const mediaURLs = [];
+    for (let file of mediaFiles) {
+      const storageRef = firebase.storage().ref(`hosts/${email}/${file.name}`);
+      await storageRef.put(file);
+      const url = await storageRef.getDownloadURL();
+      mediaURLs.push(url);
+    }
+
+    await db.collection("hosts").doc(email).set({
+      name,
+      email,
+      phone,
+      property,
+      media: mediaURLs,
+      subscriptionExpiry: expiryDate.toISOString(),
+      status: "Active"
+    });
+
+    document.getElementById("register-message").innerText =
+      "🎉 Registration successful! 1 month free trial activated.";
+    hostForm.reset();
   });
 }
 
-// ---------------- HOST DASHBOARD ----------------
-const loginBtn = document.getElementById("loginBtn");
-if (loginBtn) {
-  loginBtn.addEventListener("click", async () => {
-    const email = document.getElementById("loginEmail").value;
-    if (!email) {
-      alert("Please enter your email");
-      return;
+// ✅ Login
+const loginForm = document.getElementById("host-login-form");
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("login-email").value;
+
+    const hostDoc = await db.collection("hosts").doc(email).get();
+    if (hostDoc.exists) {
+      localStorage.setItem("hostEmail", email);
+      window.location.href = "host-dashboard.html";
+    } else {
+      document.getElementById("login-message").innerText = "❌ No account found.";
     }
+  });
+}
 
-    const snapshot = await db.collection("hosts").where("email", "==", email).get();
+// ✅ Dashboard
+if (window.location.pathname.includes("host-dashboard.html")) {
+  const email = localStorage.getItem("hostEmail");
+  if (!email) {
+    window.location.href = "host-login.html";
+  } else {
+    const hostRef = db.collection("hosts").doc(email);
 
-    if (snapshot.empty) {
-      alert("No host found with this email. Please register first.");
-      return;
-    }
+    hostRef.onSnapshot((doc) => {
+      if (doc.exists) {
+        const data = doc.data();
+        const expiry = new Date(data.subscriptionExpiry);
+        const now = new Date();
 
-    const hostData = snapshot.docs[0].data();
-    const hostId = snapshot.docs[0].id;
+        let status = "Active";
+        if (now > expiry) {
+          status = "Expired";
+          hostRef.update({ status: "Expired" });
+        }
 
-    // Automatic expiry check
-    const now = Date.now();
-    if (hostData.subscription.endDate < now) {
-      hostData.subscription.status = "expired";
-      await db.collection("hosts").doc(hostId).update({
-        "subscription.status": "expired"
-      });
-    }
-
-    // Fill dashboard
-    document.getElementById("hostName").innerText = hostData.name;
-    document.getElementById("hostEmail").innerText = hostData.email;
-    document.getElementById("hostPhone").innerText = hostData.phone;
-    document.getElementById("propertyTitle").innerText = hostData.property.title;
-    document.getElementById("propertyLocation").innerText = hostData.property.location;
-    document.getElementById("propertyDescription").innerText = hostData.property.description;
-
-    const gallery = document.getElementById("mediaGallery");
-    gallery.innerHTML = "";
-    hostData.property.media.forEach((url) => {
-      if (url.endsWith(".mp4")) {
-        gallery.innerHTML += `<video src="${url}" controls width="200"></video>`;
-      } else {
-        gallery.innerHTML += `<img src="${url}" width="200">`;
+        document.getElementById("host-properties").innerHTML = `
+          <h4>${data.property}</h4>
+          <p>Status: <strong>${status}</strong></p>
+          <p>Subscription ends: ${expiry.toDateString()}</p>
+          ${data.media.map(m => `<p><a href="${m}" target="_blank">View Media</a></p>`).join("")}
+        `;
       }
     });
 
-    document.getElementById("subStatus").innerText = hostData.subscription.status;
-    document.getElementById("subEnd").innerText = new Date(hostData.subscription.endDate).toDateString();
+    // Upload new media
+    const addMediaForm = document.getElementById("add-media-form");
+    addMediaForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const newFiles = document.getElementById("new-media").files;
+      const urls = [];
 
-    document.getElementById("loginSection").style.display = "none";
-    document.getElementById("dashboard").style.display = "block";
+      for (let file of newFiles) {
+        const storageRef = firebase.storage().ref(`hosts/${email}/${file.name}`);
+        await storageRef.put(file);
+        const url = await storageRef.getDownloadURL();
+        urls.push(url);
+      }
 
-    document.getElementById("renewBtn").onclick = async () => {
-      alert("Payment coming soon. Renewing trial for now.");
-      await db.collection("hosts").doc(hostId).update({
-        "subscription.status": "active",
-        "subscription.endDate": Date.now() + 30 * 24 * 60 * 60 * 1000
-      });
-      location.reload();
-    };
-  });
-}
-
-// ---------------- SHOW PROPERTIES ON HOMEPAGE ----------------
-const propertyList = document.getElementById("propertyList");
-if (propertyList) {
-  db.collection("hosts").where("subscription.status", "==", "active").get().then(snapshot => {
-    snapshot.forEach(doc => {
-      const host = doc.data();
-      const div = document.createElement("div");
-      div.classList.add("property");
-
-      div.innerHTML = `
-        <h3>${host.property.title}</h3>
-        <p><b>Location:</b> ${host.property.location}</p>
-        <p>${host.property.description}</p>
-        <div>
-          ${host.property.media.map(url => 
-            url.endsWith(".mp4") 
-              ? `<video src="${url}" controls width="200"></video>` 
-              : `<img src="${url}" width="200">`
-          ).join("")}
-        </div>
-      `;
-
-      propertyList.appendChild(div);
+      const hostDoc = await hostRef.get();
+      if (hostDoc.exists) {
+        const oldMedia = hostDoc.data().media || [];
+        await hostRef.update({ media: oldMedia.concat(urls) });
+      }
     });
-  });
+  }
 }
+
+// ✅ Logout
+function logout() {
+  localStorage.removeItem("hostEmail");
+  window.location.href = "index.html";
+  }
