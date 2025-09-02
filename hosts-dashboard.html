@@ -4,44 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Host Dashboard - KaribuBnB</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>🏠 Host Dashboard</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="bnb-listings.html">Listings</a>
-      <a href="host-register.html">Register</a>
-      <a href="hosts.html">Hosts</a>
-      <button id="logoutBtn">Logout</button>
-    </nav>
-  </header>
+  <h1>Host Dashboard</h1>
 
-  <main>
-    <section class="dashboard-section">
-      <h2>📖 Bookings</h2>
-      <table class="dashboard-table">
-        <thead>
-          <tr>
-            <th>Guest</th>
-            <th>Email</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="bookingsTable">
-          <!-- Filled dynamically -->
-        </tbody>
-      </table>
-    </section>
-  </main>
+  <!-- Login Section -->
+  <div id="loginSection">
+    <h3>Login with your Email</h3>
+    <input type="email" id="loginEmail" placeholder="Enter your email">
+    <button id="loginBtn">Login</button>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 KaribuBnB</p>
-  </footer>
+  <!-- Dashboard Section -->
+  <div id="dashboard" style="display:none;">
+    <h2>Your Property</h2>
+    <p><b>Name:</b> <span id="hostName"></span></p>
+    <p><b>Email:</b> <span id="hostEmail"></span></p>
+    <p><b>Phone:</b> <span id="hostPhone"></span></p>
+    <p><b>Property Title:</b> <span id="propertyTitle"></span></p>
+    <p><b>Location:</b> <span id="propertyLocation"></span></p>
+    <p><b>Description:</b> <span id="propertyDescription"></span></p>
 
-  <script type="module" src="app.js"></script>
+    <h3>Media</h3>
+    <div id="mediaGallery"></div>
+
+    <h3>Subscription</h3>
+    <p><b>Status:</b> <span id="subStatus"></span></p>
+    <p><b>Ends On:</b> <span id="subEnd"></span></p>
+
+    <button id="renewBtn">Renew Subscription</button>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script src="app.js"></script>
 </body>
-    </html>
+</html>
