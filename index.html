@@ -1,66 +1,27 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KaribuBnB - Welcome</title>
-  <link rel="stylesheet" href="style.css">
-  <script type="module" src="app.js"></script>
+  <title>KaribuBnB</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <h1>KaribuBnB</h1>
+  <p>Find the best BnBs and hotels worldwide.</p>
 
-  <!-- ====== HEADER ====== -->
-  <header>
-    <h1>KaribuBnB</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="bnb-listings.html">Listings</a></li>
-        <li><a href="hosts.html">Hosts</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav>
+    <a href="host-register.html">Register Property</a> |
+    <a href="host-dashboard.html">Host Dashboard</a>
+  </nav>
 
-  <!-- ====== HERO SECTION ====== -->
-  <section>
-    <h2>Welcome to KaribuBnB</h2>
-    <p>Find affordable stays, connect with local hosts, and enjoy seamless bookings with KaribuBnB. 
-       Hosting has never been easier—list your space and start earning today.</p>
-  </section>
+  <h2>Available Properties</h2>
+  <div id="propertyList"></div>
 
-  <!-- ====== FEATURES ====== -->
-  <section>
-    <h2>Why Choose Us?</h2>
-    <div class="card-container">
-      <div class="card">
-        <h3>Affordable Stays</h3>
-        <p>Discover budget-friendly accommodations across Kenya without compromising comfort.</p>
-      </div>
-      <div class="card">
-        <h3>Trusted Hosts</h3>
-        <p>Every host is verified and ready to give you a warm KaribuBnB welcome.</p>
-      </div>
-      <div class="card">
-        <h3>Easy Payments</h3>
-        <p>Pay quickly and securely via <strong>M-Pesa</strong> in just one tap.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
-  <!-- ====== FOOTER ====== -->
-  <footer>
-    <p>© 2025 KaribuBnB | Contact: 0112226127 | Email: karibubnb20@gmail.com</p>
-  </footer>
-
-  <!-- ====== WHATSAPP QUICK CHAT ====== -->
-  <a href="https://wa.me/254112226127" 
-     target="_blank" 
-     class="whatsapp-btn" 
-     title="Chat with us on WhatsApp">
-     💬
-  </a>
-
+  <script src="app.js"></script>
 </body>
 </html>
