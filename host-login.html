@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Host Login - KaribuBnB</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Host Login</h1>
+  </header>
+
+  <main>
+    <form id="host-login-form" class="form">
+      <label>Email</label>
+      <input type="email" id="login-email" required>
+
+      <label>Password</label>
+      <input type="password" id="login-password" required>
+
+      <button type="submit">Login</button>
+    </form>
+    <p id="login-message"></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 KaribuBnB</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+                                                                                  </html>
