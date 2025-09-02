@@ -1,4 +1,4 @@
- ===== Reset & Base ===== */
+/* Global reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,64 +6,42 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background: #f9f9fb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fa;
   color: #333;
+  line-height: 1.6;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-}
-
-/* ===== Header ===== */
-header {
-  background: #004d40;
-  color: #fff;
-  padding: 1rem 2rem;
+/* Navbar */
+.navbar {
+  background: #0d6efd;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  padding: 1rem 2rem;
 }
 
-header h1 {
-  font-size: 1.8rem;
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
   font-weight: bold;
 }
 
-nav ul {
-  display: flex;
-  gap: 1.2rem;
+.navbar a:hover {
+  text-decoration: underline;
 }
 
-nav a {
-  color: #fff;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-nav a:hover,
-nav a.active {
-  color: #ffd54f;
-}
-
-/* ===== Hero Section ===== */
+/* Hero section */
 .hero {
-  background: url("images/hero-bg.jpg") center/cover no-repeat;
-  color: #fff;
+  background: url("images/hero-bg.jpg") no-repeat center center/cover;
+  color: white;
   text-align: center;
-  padding: 6rem 2rem;
+  padding: 5rem 2rem;
 }
 
-.hero h2 {
+.hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -73,88 +51,148 @@ nav a.active {
   margin-bottom: 2rem;
 }
 
-.btn {
-  background: #ffd54f;
-  color: #333;
+.btn-primary {
+  display: inline-block;
+  background: #0d6efd;
+  color: white;
   padding: 0.8rem 1.5rem;
-  border-radius: 30px;
-  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
   transition: background 0.3s;
 }
 
-.btn:hover {
-  background: #ffca28;
+.btn-primary:hover {
+  background: #084298;
 }
 
-/* ===== Cards ===== */
+/* Cards (Listings, Gallery, Dashboard) */
 .card {
-  background: #fff;
-  margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  max-width: 900px;
-}
-
-.card h2 {
-  margin-bottom: 1rem;
-  color: #004d40;
-}
-
-/* ===== Gallery ===== */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.gallery-grid img {
-  width: 100%;
+  background: white;
   border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s;
 }
 
-.gallery-grid img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+.card:hover {
+  transform: translateY(-5px);
 }
 
-/* ===== Footer ===== */
-footer {
-  background: #004d40;
-  color: #fff;
+.card img, .card video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.btn-book, .btn-chat, .btn-dm {
+  display: block;
   text-align: center;
-  padding: 1.5rem;
-  margin-top: 3rem;
-  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-footer a {
-  color: #ffd54f;
-  font-weight: 500;
+.btn-book {
+  background: #198754;
+  color: white;
 }
 
-footer a:hover {
-  text-decoration: underline;
+.btn-book:hover {
+  background: #145c32;
 }
 
-/* ===== Responsive ===== */
+.btn-chat {
+  background: #25d366;
+  color: white;
+}
+
+.btn-chat:hover {
+  background: #128c7e;
+}
+
+.btn-dm {
+  background: #0dcaf0;
+  color: white;
+}
+
+.btn-dm:hover {
+  background: #0aa2c0;
+}
+
+/* Dashboard */
+.dashboard {
+  padding: 2rem;
+}
+
+.dashboard h2 {
+  margin-bottom: 1rem;
+}
+
+.dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.dashboard th, .dashboard td {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.dashboard th {
+  background: #0d6efd;
+  color: white;
+}
+
+/* Subscription Status */
+.status-active {
+  color: green;
+  font-weight: bold;
+}
+
+.status-expired {
+  color: red;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background: #0d6efd;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Mobile responsive */
 @media (max-width: 768px) {
-  nav ul {
+  .navbar {
     flex-direction: column;
-    gap: 0.5rem;
   }
 
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .hero h2 {
+  .hero h1 {
     font-size: 2rem;
   }
 
-  .hero p {
-    font-size: 1rem;
+  .card {
+    margin: 0.5rem;
   }
 }
