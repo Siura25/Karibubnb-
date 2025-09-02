@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KaribuBnB - Payment</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+</head>
+<body>
+  <header>
+    <h1>Subscription Payment</h1>
+  </header>
+
+  <main>
+    <p>Your 1-month free trial has ended. Please subscribe to continue listing your property.</p>
+    <div id="paypal-button-container"></div>
+  </main>
+
+  <script>
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            description: "KaribuBnB Host Subscription",
+            amount: {
+              currency_code: "USD",
+              value: "10.00"   // subscription price
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert("Payment completed by " + details.payer.name.given_name);
+
+          // ✅ Mark subscription as paid in Firestore
+          fetch("app.js") // your backend logic can go here if server-side
+        });
+      },
+      onError: function(err) {
+        console.error(err);
+        alert("Payment could not be completed. Please try again.");
+      }
+    }).render('#paypal-button-container');
+  </script>
+</body>
+    </html>
