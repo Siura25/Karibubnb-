@@ -3,52 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KaribuBnB - Host Register/Login</title>
-  <link rel="stylesheet" href="style.css">
-  <script type="module" src="app.js" defer></script>
+  <title>Host Registration - KaribuBnB</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>KaribuBnB Host Portal</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="bnb-listings.html">Listings</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <h1>Register Your Property (1st Month Free)</h1>
 
-  <main class="form-container">
-    <h2>Host Registration / Login</h2>
+  <form id="hostForm">
+    <label>Name</label>
+    <input type="text" id="hostName" required>
 
-    <!-- Registration Form -->
-    <section>
-      <h3>Create Account</h3>
-      <form id="registerForm">
-        <input type="text" id="hostName" placeholder="Full Name" required>
-        <input type="email" id="hostEmail" placeholder="Email Address" required>
-        <input type="password" id="hostPassword" placeholder="Password" required>
-        <input type="tel" id="hostPhone" placeholder="Phone Number" required>
-        <button type="submit">Register</button>
-      </form>
-    </section>
+    <label>Email</label>
+    <input type="email" id="hostEmail" required>
 
-    <hr>
+    <label>Phone (M-PESA)</label>
+    <input type="tel" id="hostPhone" required>
 
-    <!-- Login Form -->
-    <section>
-      <h3>Login</h3>
-      <form id="loginForm">
-        <input type="email" id="loginEmail" placeholder="Email Address" required>
-        <input type="password" id="loginPassword" placeholder="Password" required>
-        <button type="submit">Login</button>
-      </form>
-    </section>
+    <label>Property Title</label>
+    <input type="text" id="propertyTitle" required>
 
-    <p id="authMessage"></p>
-  </main>
+    <label>Location</label>
+    <input type="text" id="propertyLocation" required>
 
-  <footer>
-    <p>&copy; 2025 KaribuBnB. All rights reserved.</p>
-  </footer>
+    <label>Upload Photos/Videos</label>
+    <input type="file" id="mediaUpload" multiple accept="image/*,video/*">
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="status"></p>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
+  <script src="app.js"></script>
 </body>
 </html>
