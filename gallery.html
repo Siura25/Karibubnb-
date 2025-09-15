@@ -3,38 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KaribuBnB - Gallery</title>
+  <title>Gallery - KaribuBnB</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Navigation -->
   <header>
-    <h1>KaribuBnB</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="bnb-listings.html">Listings</a></li>
-        <li><a href="hosts.html">Hosts</a></li>
-        <li><a href="gallery.html" class="active">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container nav">
+      <h1 class="logo">KaribuBnB</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bnb-listings.html">Listings</a></li>
+          <li><a href="hosts.html">Become a Host</a></li>
+          <li><a href="gallery.html" class="active">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="host-login.html" class="btn">Host Login</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="gallery">
-    <h2>Our Gallery</h2>
-    <div class="gallery-grid">
-      <img src="images/gallery1.jpg" alt="Gallery Image 1">
-      <img src="images/gallery2.jpg" alt="Gallery Image 2">
-      <img src="images/gallery3.jpg" alt="Gallery Image 3">
-      <img src="images/gallery4.jpg" alt="Gallery Image 4">
+  <!-- Hero -->
+  <section class="hero hero-small">
+    <div class="hero-content">
+      <h2>Gallery</h2>
+      <p>Explore our beautiful BnB spaces</p>
     </div>
   </section>
 
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="container">
+      <h2>Our Spaces</h2>
+      <div class="gallery-grid">
+        <!-- Images -->
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Luxury Room">
+        <img src="https://images.unsplash.com/photo-1560184897-ae75f4184934?auto=format&fit=crop&w=800&q=80" alt="Dining Area">
+        <img src="https://images.unsplash.com/photo-1600585154154-1b5bfa4a2363?auto=format&fit=crop&w=800&q=80" alt="Outdoor View">
+        <img src="https://images.unsplash.com/photo-1628744691090-5737c2a5f6e2?auto=format&fit=crop&w=800&q=80" alt="Swimming Pool">
+
+        <!-- Video -->
+        <video controls>
+          <source src="https://cdn.coverr.co/videos/coverr-relaxing-hotel-pool-9989/1080p.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <video controls>
+          <source src="https://cdn.coverr.co/videos/coverr-hotel-room-with-bed-and-bathroom-2376/1080p.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>© 2025 KaribuBnB | Contact: 
-      <a href="tel:0112226127">0112226127</a> | 
-      <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a>
-    </p>
+    <div class="container footer">
+      <p>&copy; 2025 KaribuBnB. All rights reserved.</p>
+      <p>📧 <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a> | 📞 0112226127</p>
+    </div>
   </footer>
 </body>
 </html>
