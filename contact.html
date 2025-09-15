@@ -5,58 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - KaribuBnB</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <!-- ====== HEADER ====== -->
+  <!-- Navigation -->
   <header>
-    <h1>KaribuBnB</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="bnb-listings.html">Listings</a></li>
-        <li><a href="hosts.html">Hosts</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container nav">
+      <h1 class="logo">KaribuBnB</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bnb-listings.html">Listings</a></li>
+          <li><a href="hosts.html">Become a Host</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="host-login.html" class="btn">Host Login</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- ====== CONTACT SECTION ====== -->
-  <section>
-    <h2>Get in Touch</h2>
-    <p>If you have any questions, need help with booking, or want to host your property, contact us directly.</p>
+  <!-- Hero Section -->
+  <section class="hero hero-small">
+    <div class="hero-content">
+      <h2>Contact Us</h2>
+      <p>We’d love to hear from you</p>
+    </div>
+  </section>
 
-    <div class="card-container">
-      <div class="card">
-        <h3>📞 Phone</h3>
-        <p><a href="tel:+254112226127">0112226127</a></p>
-      </div>
+  <!-- Contact Section -->
+  <section class="contact">
+    <div class="container">
+      <h3>Get in Touch</h3>
+      <p>Whether you’re a host or guest, feel free to reach out to us with your questions, feedback, or partnership opportunities.</p>
+      <div class="contact-grid">
+        
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <form action="mailto:karibubnb20@gmail.com" method="post" enctype="text/plain">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
 
-      <div class="card">
-        <h3>💬 WhatsApp</h3>
-        <p><a href="https://wa.me/254112226127" target="_blank">Chat on WhatsApp</a></p>
-      </div>
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
 
-      <div class="card">
-        <h3>📧 Email</h3>
-        <p><a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a></p>
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit" class="btn-primary">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h4>📧 Email</h4>
+          <p><a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a></p>
+
+          <h4>📞 Phone</h4>
+          <p><a href="tel:0112226127">0112226127</a></p>
+
+          <h4>💬 WhatsApp</h4>
+          <p><a href="https://wa.me/254112226127" target="_blank">Chat with us on WhatsApp</a></p>
+
+          <h4>📍 Location</h4>
+          <p>Nairobi, Kenya</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ====== FOOTER ====== -->
+  <!-- Footer -->
   <footer>
-    <p>© 2025 KaribuBnB | Phone: 0112226127 | Email: karibubnb20@gmail.com</p>
+    <div class="container footer">
+      <p>&copy; 2025 KaribuBnB. All rights reserved.</p>
+      <p>📧 <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a> | 📞 0112226127</p>
+    </div>
   </footer>
-
-  <!-- ====== FLOATING WHATSAPP BUTTON ====== -->
-  <a href="https://wa.me/254112226127" 
-     target="_blank" 
-     class="whatsapp-btn" 
-     title="Chat with us on WhatsApp">
-     💬
-  </a>
-
 </body>
 </html>
