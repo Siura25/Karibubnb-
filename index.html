@@ -3,21 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KaribuBnB</title>
+  <title>KaribuBnB - Find Your Perfect Stay</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Navigation -->
   <header>
-    <h1>Welcome to KaribuBnB</h1>
-    <nav>
-      <a href="host-register.html">Become a Host</a>
-      <a href="host-login.html">Host Login</a>
-    </nav>
+    <div class="container nav">
+      <h1 class="logo">KaribuBnB</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="bnb-listings.html">Listings</a></li>
+          <li><a href="hosts.html">Become a Host</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="host-login.html" class="btn">Host Login</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h2>Find Unique Stays Worldwide</h2>
-    <p>Guests can browse properties, and hosts can list with a free 1-month trial.</p>
-  </main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Welcome to <span>KaribuBnB</span></h2>
+      <p>Discover unique stays and connect with trusted hosts worldwide.</p>
+      <a href="bnb-listings.html" class="btn-primary">Browse Listings</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <h3>Why Choose KaribuBnB?</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>🌍 Global Reach</h4>
+          <p>Find homes, apartments, and hotels across the world.</p>
+        </div>
+        <div class="card">
+          <h4>🤝 Trusted Hosts</h4>
+          <p>Every host is verified to give you peace of mind.</p>
+        </div>
+        <div class="card">
+          <h4>📱 Easy Booking</h4>
+          <p>Book directly via WhatsApp or secure payment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h3>Are you a host?</h3>
+      <p>List your property for free in the first month, then only KES 500/month.</p>
+      <a href="hosts.html" class="btn-primary">Start Hosting</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer">
+      <p>&copy; 2025 KaribuBnB. All rights reserved.</p>
+      <p>📧 <a href="mailto:karibubnb20@gmail.com">karibubnb20@gmail.com</a> | 📞 0112226127</p>
+    </div>
+  </footer>
 </body>
-</html>
+    </html>
