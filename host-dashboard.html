@@ -3,19 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Host Dashboard</title>
+  <title>Host Dashboard - KaribuBnB</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
-  <script src="app.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
 </head>
 <body>
-  <h1>Host Dashboard</h1>
-  <div id="dashboardContent">
-    <button onclick="logout()">Logout</button>
-    <h2>Your Listings</h2>
-    <p>Add photos, videos, and manage your listings here.</p>
-  </div>
+  <header>
+    <h1>KaribuBnB - Host Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="host-dashboard.html">Dashboard</a>
+      <a href="logout.html">Logout</a>
+    </nav>
+  </header>
+
+  <main class="dashboard-container">
+    <section class="subscription-status">
+      <h2>Subscription Status</h2>
+      <p id="subStatus">Checking...</p>
+    </section>
+
+    <section class="new-listing">
+      <h2>Add a New Listing</h2>
+      <form id="listingForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" required></textarea>
+
+        <label for="price">Price (per night in KES):</label>
+        <input type="number" id="price" required>
+
+        <label for="media">Upload Image/Video:</label>
+        <input type="file" id="media" accept="image/*,video/*" required>
+
+        <button type="submit">Post Listing</button>
+      </form>
+    </section>
+
+    <section class="my-listings">
+      <h2>My Listings</h2>
+      <div id="listingsContainer"></div>
+    </section>
+  </main>
+
+  <script type="module">
+    // 🔹 Firebase Config (replace with your Firebase config)
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const hostPhone = localStorage.getItem("hostPhone"); // Save phone after payment success
+    const subStatusEl = document.getElementById("subStatus");
+
+    // 🔹 Check subscription expiry
+    async function checkSubscription() {
+      const q = query(collection(db, "hostPayments"), where("phone", "==", hostPhone));
+      const querySnapshot = await getDocs(q);
+      let active = false;
+
+      querySnapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        const expiry = new Date(data.timestamp.toDate());
+        expiry.setMonth(expiry.getMonth() + 1); // 1 month expiry
+
+        if (new Date() <= expiry && data.status === "Success") {
+          active = true;
+        }
+      });
+
+      subStatusEl.textContent = active ? "✅ Active Subscription" : "❌ Expired - Please Renew";
+    }
+    checkSubscription();
+
+    // 🔹 Add new listing
+    document.getElementById("listingForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById("title").value;
+      const description = document.getElementById("description").value;
+      const price = document.getElementById("price").value;
+
+      await addDoc(collection(db, "listings"), {
+        host: hostPhone,
+        title,
+        description,
+        price,
+        createdAt: new Date()
+      });
+
+      alert("Listing added successfully!");
+      loadListings();
+    });
+
+    // 🔹 Load existing listings
+    async function loadListings() {
+      const q = query(collection(db, "listings"), where("host", "==", hostPhone));
+      const querySnapshot = await getDocs(q);
+      const container = document.getElementById("listingsContainer");
+      container.innerHTML = "";
+
+      querySnapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        const div = document.createElement("div");
+        div.classList.add("listing-card");
+        div.innerHTML = `
+          <h3>${data.title}</h3>
+          <p>${data.description}</p>
+          <p><strong>KES ${data.price}</strong></p>
+        `;
+        container.appendChild(div);
+      });
+    }
+    loadListings();
+  </script>
 </body>
 </html>
