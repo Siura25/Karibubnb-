@@ -1,0 +1,26 @@
+<form id="hostPaymentForm">
+  <label for="phone">M-Pesa Phone Number:</label>
+  <input type="text" id="phone" name="phone" placeholder="07XXXXXXXX" required>
+
+  <label for="amount">Amount (KES):</label>
+  <input type="number" id="amount" name="amount" value="200" readonly>
+
+  <button type="submit">Pay Now</button>
+</form>
+
+<p id="paymentStatus"></p>
+
+<script>
+  document.getElementById("hostPaymentForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const phone = document.getElementById("phone").value;
+    const amount = document.getElementById("amount").value;
+
+    // For now this is fake success until Daraja is live
+    document.getElementById("paymentStatus").textContent = "Simulated payment success! Redirecting...";
+
+    setTimeout(() => {
+      window.location.href = "host-dashboard.html";
+    }, 2000);
+  });
+</script>
