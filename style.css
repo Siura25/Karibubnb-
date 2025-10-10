@@ -1,123 +1,122 @@
-/* Global Styles */
-body {
+/* ---------- General Styling ---------- */
+body, html {
   margin: 0;
-  font-family: "Poppins", sans-serif;
-  background-color: #f7f9fb;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafc;
   color: #333;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Header */
-.main-header {
-  background: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+/* ---------- Navbar ---------- */
+.navbar {
+  background: #004aad;
+  color: #fff;
+  padding: 15px 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 50px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
-
-.logo {
-  font-size: 24px;
-  font-weight: 700;
-  color: #333;
+.navbar .logo {
+  font-weight: 600;
+  font-size: 22px;
 }
-
-.logo span {
-  color: #009688;
+.navbar .logo span {
+  color: #00e676;
 }
-
-nav a {
-  margin: 0 15px;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-nav a:hover,
-nav a.active {
-  color: #009688;
-}
-
-.host-btn {
-  background: #009688;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 8px;
-}
-
-/* Hero Section */
-.hero {
-  background: url("https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1500&q=80")
-    center/cover no-repeat;
-  color: white;
-  text-align: center;
-  padding: 120px 20px;
+.nav-links {
+  list-style: none;
   display: flex;
-  align-items: center;
+  gap: 20px;
+}
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-links a:hover {
+  color: #00e676;
+}
+
+/* ---------- Payment Section ---------- */
+.host-payment-body {
+  background: linear-gradient(to right, #e3f2fd, #f8f9fa);
+  min-height: 100vh;
+}
+
+.payment-section {
+  display: flex;
   justify-content: center;
-  min-height: 80vh;
+  align-items: center;
+  padding: 50px 20px;
 }
 
-.hero-text h1 {
-  font-size: 3rem;
-}
-
-.hero-text span {
-  color: #00e1b0;
-}
-
-.cta-btn {
-  display: inline-block;
-  margin-top: 20px;
-  background: #00bfa6;
-  padding: 12px 30px;
-  color: white;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.cta-btn:hover {
-  background: #008c7a;
-}
-
-/* Features */
-.features {
+.payment-card {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  max-width: 450px;
+  width: 100%;
   text-align: center;
-  padding: 60px 20px;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.feature-card {
-  background: white;
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   transition: 0.3s;
 }
 
-.feature-card:hover {
+.payment-card:hover {
   transform: translateY(-5px);
 }
 
-/* Footer */
-footer {
-  background: #009688;
-  color: white;
-  text-align: center;
-  padding: 30px 10px;
-  font-size: 14px;
+.payment-card h2 {
+  color: #004aad;
 }
+
+.payment-card p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.payment-form label {
+  display: block;
+  text-align: left;
+  font-weight: 500;
+  margin: 10px 0 5px;
+}
+
+.payment-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.pay-btn {
+  width: 100%;
+  background-color: #00e676;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.pay-btn:hover {
+  background-color: #00c853;
+}
+
+.payment-status {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #444;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  background: #004aad;
+  color: #fff;
+  padding: 15px;
+  margin-top: 40px;
+                              }
