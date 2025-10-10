@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Host Payment - KaribuBnB</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Host Payment | KaribuBnB</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header><h1>Host Payment</h1></header>
+<body class="host-payment-body">
 
-  <main class="payment-container">
-    <h2>Pay to List Your Property</h2>
-    <p>Pay KES 500 to unlock your host dashboard and start listing your BnB.</p>
+  <nav class="navbar">
+    <div class="logo">Karibu<span>BnB</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="bnb-listings.html">Listings</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-    <form id="hostPaymentForm">
-      <label for="phone">M-Pesa Number:</label>
-      <input type="text" id="phone" placeholder="07XXXXXXXX" required />
+  <main class="payment-section">
+    <div class="payment-card">
+      <h2>Become a Verified Host</h2>
+      <p>Join <strong>KaribuBnB</strong> and list your property for guests worldwide.  
+      <br>Pay only <strong>KES 500</strong> to activate your host account for 1 month.</p>
 
-      <input type="hidden" id="amount" value="500" />
-      <button type="submit">Pay Now</button>
-    </form>
+      <form id="hostPaymentForm" class="payment-form">
+        <label for="phone">M-Pesa Phone Number</label>
+        <input type="text" id="phone" placeholder="07XXXXXXXX" required>
 
-    <p id="paymentStatus"></p>
+        <label for="amount">Amount (KES)</label>
+        <input type="number" id="amount" value="500" readonly>
+
+        <button type="submit" class="pay-btn">Pay Now with M-Pesa</button>
+      </form>
+
+      <p id="paymentStatus" class="payment-status"></p>
+    </div>
   </main>
+
+  <footer class="footer">
+    <p>© 2025 KaribuBnB. All rights reserved.</p>
+  </footer>
 
   <script>
     document.getElementById("hostPaymentForm").addEventListener("submit", async (e) => {
@@ -30,16 +48,25 @@
       const phone = document.getElementById("phone").value;
       const amount = document.getElementById("amount").value;
 
-      const res = await fetch("https://YOUR_BACKEND_URL/pay", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone, amount })
-      });
-      const data = await res.json();
-      document.getElementById("paymentStatus").textContent = data.message;
+      document.getElementById("paymentStatus").textContent = "Processing payment... please wait";
 
-      if (data.success) {
-        setTimeout(() => (window.location.href = "host-dashboard.html"), 2000);
+      try {
+        const response = await fetch("https://YOUR_BACKEND_URL/pay", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ phone, amount })
+        });
+
+        const result = await response.json();
+        document.getElementById("paymentStatus").textContent = result.message;
+
+        if (result.success) {
+          setTimeout(() => {
+            window.location.href = "host-dashboard.html";
+          }, 2500);
+        }
+      } catch {
+        document.getElementById("paymentStatus").textContent = "Something went wrong. Try again.";
       }
     });
   </script>
