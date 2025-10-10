@@ -1,26 +1,47 @@
-<form id="hostPaymentForm">
-  <label for="phone">M-Pesa Phone Number:</label>
-  <input type="text" id="phone" name="phone" placeholder="07XXXXXXXX" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Host Payment - KaribuBnB</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header><h1>Host Payment</h1></header>
 
-  <label for="amount">Amount (KES):</label>
-  <input type="number" id="amount" name="amount" value="200" readonly>
+  <main class="payment-container">
+    <h2>Pay to List Your Property</h2>
+    <p>Pay KES 500 to unlock your host dashboard and start listing your BnB.</p>
 
-  <button type="submit">Pay Now</button>
-</form>
+    <form id="hostPaymentForm">
+      <label for="phone">M-Pesa Number:</label>
+      <input type="text" id="phone" placeholder="07XXXXXXXX" required />
 
-<p id="paymentStatus"></p>
+      <input type="hidden" id="amount" value="500" />
+      <button type="submit">Pay Now</button>
+    </form>
 
-<script>
-  document.getElementById("hostPaymentForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const phone = document.getElementById("phone").value;
-    const amount = document.getElementById("amount").value;
+    <p id="paymentStatus"></p>
+  </main>
 
-    // For now this is fake success until Daraja is live
-    document.getElementById("paymentStatus").textContent = "Simulated payment success! Redirecting...";
+  <script>
+    document.getElementById("hostPaymentForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const phone = document.getElementById("phone").value;
+      const amount = document.getElementById("amount").value;
 
-    setTimeout(() => {
-      window.location.href = "host-dashboard.html";
-    }, 2000);
-  });
-</script>
+      const res = await fetch("https://YOUR_BACKEND_URL/pay", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone, amount })
+      });
+      const data = await res.json();
+      document.getElementById("paymentStatus").textContent = data.message;
+
+      if (data.success) {
+        setTimeout(() => (window.location.href = "host-dashboard.html"), 2000);
+      }
+    });
+  </script>
+</body>
+</html>
